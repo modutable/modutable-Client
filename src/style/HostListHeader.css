@@ -1,0 +1,44 @@
+#HostList-header {
+  height: 10%;
+  display: flex;
+}
+#HostList-logoBox {
+  display: flex;
+  height: 100%;
+  width: 20%;
+}
+#HostList-header-img {
+  height: 50%;
+  width: 50%;
+  background-image: url("../img/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: auto;
+}
+
+#HostList-SearchBox {
+  height: 100%;
+  width: 50%;
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+}
+
+#HostList-SearchSize {
+  width: 100%;
+  margin: auto;
+}
+
+#HostList-tapBox {
+  height: 100%;
+  width: 25%;
+  display: flex;
+}
+
+#HostList-header #Top-tapMenu {
+  margin: auto;
+}
+
+#HostList-header #Top-tapMenu .tap {
+  background-color: #f28058;
+}

@@ -12,29 +12,36 @@ export default function MainViewBottom() {
       <h3 className="Bottom-searchBar" style={{ fontWeight: "bold", textAlign: "left" }}>
         What are you looking for?
       </h3>
+
       <div className="Bottom-searchBar">
         <Search
           className="Bottom-searchBarUnit"
           placeholder="input search text"
           onSearch={value => console.log(value)}
-          style={{ width: 200 }}
+          size="large"
         />
       </div>
+
       <div className="Bottom-searchBar">
-        <DatePicker className="Bottom-searchBarUnit" />
+        <DatePicker className="Bottom-searchBarUnit" size="large" />
       </div>
+
       <div className="Bottom-searchBar">
         <InputGroup className="Bottom-searchBarUnit">
           <Select
             className="Bottom-searchBarUnit"
+            size="large"
             icon={<Icon type="user" />}
             defaultValue="Guests"
           />
           {/* <Option /> */}
         </InputGroup>
       </div>
+
       <div className="Bottom-searchBar">
-        <Button className="Bottom-searchBarUnit">Search</Button>
+        <Button className="Bottom-searchBarUnit" size="large">
+          Search
+        </Button>
       </div>
     </div>
   );
