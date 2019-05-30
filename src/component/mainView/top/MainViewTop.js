@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row } from "antd";
 import "../../../style/MainViewTop.css";
-import SideMenu from "../../common/SideMenu";
+import TabButton from "../../common/TabButton";
 
 export default function MainViewTop() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -14,13 +14,8 @@ export default function MainViewTop() {
   return (
     <>
       <Row id="Top-header">
-        <div id="Top-logo">모두의테이블</div>
-        <div id="Top-tapMenu" onClick={_onClick}>
-          <div className="tap" />
-          <div className="tap" />
-          <div className="tap" />
-        </div>
-        <SideMenu onClick={_onClick} toggle={modalVisible} />
+        <div id="Top-logo" />
+        <TabButton onClick={_onClick} toggle={modalVisible} />
       </Row>
 
       <Row id="Top-bottom">
