@@ -1,0 +1,14 @@
+#Bottom-body {
+  padding: 5%;
+  text-align: center;
+}
+
+.Bottom-searchBar {
+  margin-bottom: 10%;
+  width: 100%;
+}
+
+.Bottom-searchBarUnit {
+  width: 100% !important;
+  color: #c0bdc0;
+}
