@@ -1,17 +1,17 @@
 import React from "react";
 import { Row } from "antd";
 import "../style/Main.css";
-import MainViewTop from "../component/mainView/top/MainViewTop";
-import MainViewBottom from "../component/mainView/bottom/MainViewBottom";
+import MainTop from "../component/main/MainTop";
+import MainBottom from "../component/main/MainBottom";
 
-export default function MainView() {
+export default function Main() {
   return (
     <>
       <Row id="MainView-top">
-        <MainViewTop />
+        <MainTop />
       </Row>
       <Row id="MainView-bottom">
-        <MainViewBottom />
+        <MainBottom />
       </Row>
     </>
   );

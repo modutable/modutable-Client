@@ -1,8 +1,8 @@
 import React from "react";
 import { Input, Button, DatePicker, Select, Icon } from "antd";
-import "../../../style/MainViewBottom.css";
+import "../../style/MainBottom.css";
 
-export default function MainViewBottom() {
+export default function MainBottom() {
   const Search = Input.Search;
   const InputGroup = Input.Group;
   // const { Option } = Select;

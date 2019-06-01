@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Row } from "antd";
-import "../../../style/MainViewTop.css";
-import TabButton from "../../common/TabButton";
+import "../../style/MainTop.css";
+import TabButton from "../common/TabButton";
 
-export default function MainViewTop() {
+export default function MainTop() {
   const [modalVisible, setModalVisible] = useState(false);
 
   const _onClick = e => {

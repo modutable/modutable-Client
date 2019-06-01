@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Input } from "antd";
 import TabButton from "./TabButton";
-import "../../style/HostListHeader.css";
+import "../../style/Header.css";
 
-export default function HostListHeader() {
+export default function Header() {
   const Search = Input.Search;
   const [modalVisible, setModalVisible] = useState(false);
 

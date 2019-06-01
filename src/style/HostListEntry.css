@@ -16,7 +16,6 @@
 #Entry-img {
   height: 50%;
   width: 100%;
-  border: 1px solid red;
   background-repeat: no-repeat !important;
   background-position: center !important;
   background-size: cover !important;
@@ -25,9 +24,8 @@
 #Entry-description {
   height: 50%;
   width: 100%;
-  /* border: 1px solid red; */
   position: relative;
-  padding-top: 15%;
+  padding-top: 60px;
 }
 
 #Entry-userImg {
