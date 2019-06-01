@@ -1,0 +1,46 @@
+#Experience {
+  padding: 0 5%;
+  width: 100%;
+  height: 50%;
+  margin-top: 50px;
+}
+
+.box {
+  display: flex;
+}
+.ex_iconBox {
+  width: 80%;
+  height: 40px;
+  margin: auto;
+  margin: 0 5%;
+}
+
+.ex_entry {
+  width: 100%;
+}
+
+.ex_icon {
+  font-size: 25pt !important;
+  margin: auto !important;
+}
+
+.ex_text {
+  margin: auto;
+  margin: right;
+}
+
+#ex_description {
+  margin-top: 40px;
+  width: 100%;
+  height: 50px;
+}
+
+#ex_description_title {
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+#ex_description_value {
+  width: 100%;
+  text-align: center;
+}

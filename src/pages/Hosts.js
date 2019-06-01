@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "../style/HostList.css";
+import "../style/Hosts.css";
 import { Input, DatePicker, Select, Icon } from "antd";
-import AllHeader from "../component/common/AllHeader";
-import HostListEntry from "../component/HostList/HostListEntry";
+import Header from "../component/common/Header";
+import HostListEntry from "../component/Hosts/HostListEntry";
 
-export default function HostListView() {
+export default function Hosts() {
   const [data, setData] = useState([
     {
       id: 1,
@@ -40,8 +40,8 @@ export default function HostListView() {
 
   const InputGroup = Input.Group;
   return (
-    <div id="HostList-body">
-      <AllHeader id="HostList-header" />
+    <>
+      <Header id="HostList-header" />
 
       <InputGroup compact>
         <DatePicker style={{ width: "50%", color: "black" }} size="large" />
@@ -61,6 +61,6 @@ export default function HostListView() {
         })}
       </div>
       <div>Footer</div>
-    </div>
+    </>
   );
 }

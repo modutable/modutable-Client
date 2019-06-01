@@ -1,0 +1,25 @@
+.NavBar {
+  width: 100%;
+  height: 30px;
+}
+
+.NavBar-Box {
+  width: 100%;
+  padding-bottom: 5px;
+  border-bottom: 1.5px solid #c0bdc0;
+}
+
+#NavBar-topButton {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  border: 1px solid red;
+  right: 30px;
+  bottom: 20px;
+}
+
+.link {
+  padding-right: 40px;
+  font-size: 15pt;
+  color: #5f5f5f;
+}
