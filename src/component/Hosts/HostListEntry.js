@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import "../../style/HostListEntry.css";
+import "./HostListEntry.css";
 import { Rate } from "antd";
 
 export default withRouter(function HostListEntry(props) {

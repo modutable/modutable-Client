@@ -1,9 +1,10 @@
 import React from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
-import "../../style/NavBar.css";
+import "./NavBar.css";
 
 export default function NavBar() {
   const scrollToTop = () => {
+    console.log(1);
     scroll.scrollToTop();
   };
 

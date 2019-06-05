@@ -1,6 +1,6 @@
 import React from "react";
 import { Row } from "antd";
-import "../style/Main.css";
+import "./Main.css";
 import MainTop from "../component/main/MainTop";
 import MainBottom from "../component/main/MainBottom";
 

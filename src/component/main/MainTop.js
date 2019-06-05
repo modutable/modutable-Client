@@ -1,21 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Row } from "antd";
-import "../../style/MainTop.css";
+import "./MainTop.css";
 import TabButton from "../common/TabButton";
 
 export default function MainTop() {
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const _onClick = e => {
-    console.log("여기");
-    modalVisible ? setModalVisible(false) : setModalVisible(true);
-  };
-
   return (
     <>
       <Row id="Top-header">
         <div id="Top-logo" />
-        <TabButton onClick={_onClick} toggle={modalVisible} />
+        <TabButton />
       </Row>
 
       <Row id="Top-bottom">
