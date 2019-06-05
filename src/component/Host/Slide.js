@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../style/Slide.css";
+import "./Slide.css";
 import Slider from "react-slick";
 
 export default function Slide() {

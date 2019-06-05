@@ -1,6 +1,6 @@
 import React from "react";
 import { Icon } from "antd";
-import "../../style/Experience.css";
+import "./Experience.css";
 
 export default function Experience() {
   const iconType = ["clock-circle", "environment", "bell", "team"];
