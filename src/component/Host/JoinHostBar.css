@@ -1,0 +1,24 @@
+.JoinHostBar-container {
+  width: 100%;
+  padding: 2% 0%;
+  position: fixed;
+  bottom: 0;
+
+  background-color: white;
+}
+.JoinHostBar-checkBox {
+  -webkit-transform: scale(1.2);
+  margin: auto;
+}
+
+#JoinHostBar-check {
+  width: 70%;
+  display: flex;
+}
+
+#JoinHostBar-buttonBox {
+  width: 30%;
+}
+#JoinHostBar-button {
+  width: 50%;
+}

@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import { Input } from "antd";
 import TabButton from "./TabButton";
-import "../../style/Header.css";
+import "./Header.css";
 
 export default function Header() {
   const Search = Input.Search;
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const _onClick = e => {
-    console.log("여기");
-    modalVisible ? setModalVisible(false) : setModalVisible(true);
-  };
 
   return (
     <>
@@ -29,7 +23,7 @@ export default function Header() {
           </div>
         </div>
         <div id="HostList-tapBox" className="HostList-header-unit" span={6}>
-          <TabButton onClick={_onClick} toggle={modalVisible} />
+          <TabButton />
         </div>
       </div>
     </>

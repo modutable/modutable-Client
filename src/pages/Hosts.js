@@ -1,10 +1,22 @@
-import React, { useState } from "react";
-import "../style/Hosts.css";
+import React, { useState, useEffect } from "react";
+import "./Hosts.css";
 import { Input, DatePicker, Select, Icon } from "antd";
 import Header from "../component/common/Header";
 import HostListEntry from "../component/Hosts/HostListEntry";
+import queryString from "query-string";
+import Axios from "axios";
 
-export default function Hosts() {
+export default function Hosts({ match, location }) {
+  const values = queryString.parse(location.search);
+
+  const [query, setQuery] = useState("");
+  const [date, setDate] = useState({});
+  const [guests, setGuests] = useState("");
+
+  useEffect(() => {
+    // Axios.get()
+  }, [query, date, guests]);
+
   const [data, setData] = useState([
     {
       id: 1,
