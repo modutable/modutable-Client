@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row } from "antd";
 import "./MainTop.css";
-import TabButton from "../common/TabButton";
+import TabButton from "../common/header/TabButton";
 
 export default function MainTop() {
   return (

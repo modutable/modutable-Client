@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SideMenu from "../common/SideMenu";
+import SideMenu from "../sideMenu/SideMenu";
 
 export default function TabButton(props) {
   const [visible, setVisible] = useState(false);

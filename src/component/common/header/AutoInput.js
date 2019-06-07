@@ -3,6 +3,7 @@ import { withGoogleMap, withScriptjs } from "react-google-maps";
 import Autocomplete from "react-google-autocomplete";
 import { Icon } from "antd";
 const API_KEY = process.env.REACT_APP_google_API_KEY;
+console.log(API_KEY);
 
 export default function AutoInput(props) {
   const onPlaceSelected = place => {

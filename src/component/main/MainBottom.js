@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { withRouter } from "react-router-dom";
 import { Input, Button, DatePicker, Select, Icon } from "antd";
 import "./MainBottom.css";
-import AutoInput from "../../component/main/AutoInput";
+import AutoInput from "../../component/common/header/AutoInput";
 import Axios from "axios";
 
 export default withRouter(function MainBottom(props) {

@@ -35,7 +35,7 @@ export default function Slide() {
           console.log(image);
           return (
             <div key={i} className="slider-pages">
-              <img className="slider-img" src={image} />
+              <img className="slider-img" src={image} alt={"img" + i} />
             </div>
           );
         })}
