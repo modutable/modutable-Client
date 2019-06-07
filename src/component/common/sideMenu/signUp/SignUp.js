@@ -2,8 +2,8 @@ import React from "react";
 import "../login/Login.css";
 import { Input, Row, Col, Drawer } from "antd";
 import "antd/dist/antd.css";
-import fblogo from "../../../img/fblogo.png";
-import googlelogo from "../../../img/googlelogo.png";
+import fblogo from "../../../../img/fblogo.png";
+import googlelogo from "../../../../img/googlelogo.png";
 import BirthdayInput from "./BirthdayInput";
 import axios from "axios";
 
@@ -87,11 +87,15 @@ class SignUp extends React.Component {
               <h3>Join Eatwith</h3>
             </div>
             <button className="sotialButton" style={fbStyle}>
-              <img src={fblogo} style={{ width: "20px", float: "left" }} />
+              <img src={fblogo} style={{ width: "20px", float: "left" }} alt={"facebookLogo"} />
               Sign up with Facebook
             </button>
             <button className="sotialButton" style={googleStyle}>
-              <img src={googlelogo} style={{ width: "26px", float: "left", margin: "5px 0" }} />
+              <img
+                src={googlelogo}
+                style={{ width: "26px", float: "left", margin: "5px 0" }}
+                alt={"googleLogo"}
+              />
               Sign up with Google
             </button>
             <hr />

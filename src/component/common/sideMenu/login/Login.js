@@ -1,8 +1,8 @@
 import React from "react";
 import "./Login.css";
 import { Input, Drawer } from "antd";
-import fblogo from "../../../img/fblogo.png";
-import googlelogo from "../../../img/googlelogo.png";
+import fblogo from "../../../../img/fblogo.png";
+import googlelogo from "../../../../img/googlelogo.png";
 import axios from "axios";
 
 export default class Login extends React.Component {
@@ -78,13 +78,17 @@ export default class Login extends React.Component {
 
             <a href="http://localhost:3001/auth/facebook" className="login-units">
               <button className="sotialButton" style={fbStyle}>
-                <img src={fblogo} style={{ width: "20px", float: "left" }} />
+                <img src={fblogo} style={{ width: "20px", float: "left" }} alt={"facebookLogo"} />
                 Log in with Facebook
               </button>
             </a>
 
             <button className="sotialButton login-units" style={googleStyle}>
-              <img src={googlelogo} style={{ width: "26px", float: "left", margin: "5px 0" }} />
+              <img
+                src={googlelogo}
+                style={{ width: "26px", float: "left", margin: "5px 0" }}
+                alt={"googleLogo"}
+              />
               Log in with Google
             </button>
 
