@@ -22,7 +22,10 @@ export default class Login extends React.Component {
     var flag = [];
     flag.push(this.checkEmpty("Email"));
     flag.push(this.checkEmpty("password"));
-
+    if (!checkEmail(this.state.Email)) {
+      document.getElementById("Emailwarning").style.display = "block";
+      flag.push(false);
+    }
     if (flag.includes(false)) return;
     axios.defaults.withCredentials = true;
     axios({
@@ -34,7 +37,13 @@ export default class Login extends React.Component {
       }
     })
       .then(result => {
+        /* 모달끄기 */
         console.log(result.data);
+        if (result.data === "fail Login") {
+          document.getElementById("fairLogin").style.display = "block";
+        } else {
+          localStorage.setItem("token", result.data);
+        }
       })
       .catch(error => {
         console.log(error);
@@ -76,18 +85,24 @@ export default class Login extends React.Component {
               <h3>Welcome back!</h3>
             </div>
 
-            <a href="http://localhost:3001/auth/facebook" className="login-units">
+            <a
+              href="http://localhost:3001/auth/facebook"
+              className="login-units"
+            >
               <button className="sotialButton" style={fbStyle}>
                 <img src={fblogo} style={{ width: "20px", float: "left" }} />
                 Log in with Facebook
               </button>
             </a>
-
-            <button className="sotialButton login-units" style={googleStyle}>
-              <img src={googlelogo} style={{ width: "26px", float: "left", margin: "5px 0" }} />
-              Log in with Google
-            </button>
-
+            <a href="http://localhost:3001/auth/google" className="login-units">
+              <button className="sotialButton login-units" style={googleStyle}>
+                <img
+                  src={googlelogo}
+                  style={{ width: "26px", float: "left", margin: "5px 0" }}
+                />
+                Log in with Google
+              </button>
+            </a>
             <hr className="login-units" />
 
             <div className="login-units">
@@ -105,7 +120,9 @@ export default class Login extends React.Component {
             <p className="warningmessage login-units" id="Emailwarning">
               Please confirm in your email
             </p>
-
+            <p className="warningmessage login-units" id="fairLogin">
+              Please check your ID and password again.
+            </p>
             <div className="login-units">
               Password *
               <Input.Password
@@ -138,7 +155,10 @@ export default class Login extends React.Component {
               </a>
             </p>
 
-            <p className="footer login-units" style={{ justifyContent: "space-between" }}>
+            <p
+              className="footer login-units"
+              style={{ justifyContent: "space-between" }}
+            >
               Don't have an account?{" "}
               <a href="#" style={{ color: "#fd7854" }}>
                 Sign up now!
@@ -149,4 +169,10 @@ export default class Login extends React.Component {
       </>
     );
   }
+}
+function checkEmail(str) {
+  var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+  if (regExp.test(str)) return true;
+  else return false;
 }
