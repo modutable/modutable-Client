@@ -1,3 +1,5 @@
-export { default as Hosts } from "./Hosts";
+export { default as Events } from "./Events";
 export { default as Main } from "./Main";
-export { default as Host } from "./Host";
+export { default as Event } from "./Event";
+export { default as Account } from "./Account";
+export { default as CreatEvent } from "./CreatEvent";

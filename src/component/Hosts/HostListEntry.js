@@ -6,12 +6,12 @@ import { Rate } from "antd";
 export default withRouter(function HostListEntry(props) {
   const food = require("../../img/food.jpeg");
   const userImg = require("../../img/user.png");
-  const { title, rate, classification } = props.data;
+  const { title, rating, classification } = props.data;
 
   console.log(props);
 
   const _onClick = () => {
-    props.history.push("/ListDetail");
+    props.history.push("/host/3");
   };
 
   return (
@@ -29,7 +29,7 @@ export default withRouter(function HostListEntry(props) {
           <h4>{title}</h4>
         </div>
         <div id="Entry-description-hostRate">
-          <Rate disabled allowHalf defaultValue={rate} />
+          <Rate disabled allowHalf defaultValue={rating} />
         </div>
       </div>
     </div>

@@ -1,0 +1,19 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "phone": "010-9972-0402",
+      "address": "경기도 남양주시 도농동",
+      "guest_min": 1,
+      "guest_max": 4,
+      "openDate": "Fri Jan 02 1970 09:00:00 GMT+0900 (한국 표준시)",
+      "title": "즐거운 저녁식사",
+      "mealsType": "dinner",
+      "experience": "소개 어쩌구 저쩌구",
+      "description": "어쩌구 저쩌구",
+      "deadline": 6,
+      "userId": 1,
+      "rating": 4.5
+    }
+  ]
+}
