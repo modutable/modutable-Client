@@ -4,7 +4,6 @@ import "./Event.css";
 import TabButton from "../component/common/header/TabButton";
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import Autocomplete from "react-google-autocomplete";
-import Geocode from "react-geocode";
 import { Icon } from "antd";
 
 const API_KEY = process.env.REACT_APP_google_API_KEY;
