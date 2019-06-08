@@ -1,7 +1,34 @@
-#Host-name {
+#Event-name {
   color: black;
   width: 100%;
   height: 10%;
   margin-top: 20px;
   padding: 5%;
+}
+
+.Event-Header {
+  height: 10%;
+  width: 100%;
+  display: flex;
+}
+
+.Event-logoBox {
+  display: flex;
+  width: 30%;
+  height: 100%;
+}
+
+.Event-logo {
+  margin: auto;
+  height: 80%;
+}
+
+.Event-Header #Top-tapMenu {
+  margin: auto;
+  margin-right: 5%;
+}
+
+.Event-Header #Top-tapMenu .tap {
+  background-color: #f28058;
+  position: relative;
 }

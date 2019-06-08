@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./Information.css";
 import IntlTelInput from "react-intl-tel-input";
 import "react-intl-tel-input/dist/main.css";
-import { Place } from "../../Event";
 import AutoInput from "../../common/header/AutoInput";
 
 export default function Information() {
@@ -26,10 +25,9 @@ export default function Information() {
       </div>
       <p />
       <div>
-        <h3 style={{ fontWeight: "bold" }}>Place & Amenities</h3>
+        <h3 style={{ fontWeight: "bold" }}>Address</h3>
         <AutoInput onChange={_queryHandler} />
         <p />
-        {/* <Place query={query} /> */}
       </div>
     </div>
   );

@@ -6,31 +6,33 @@ const API_KEY = process.env.REACT_APP_google_API_KEY;
 Geocode.setApiKey(API_KEY);
 Geocode.enableDebug();
 
-export default function Place() {
+export default function Place(props) {
   const [mapPosition, setMapPosition] = useState({ lat: 37.566535, lng: 126.9779692 });
   const [markerPosition, setMarkerPosition] = useState({ lat: 37.566535, lng: 126.9779692 });
 
   const AsyncMap = withScriptjs(
     withGoogleMap(props => (
-      <GoogleMap google={props.google} defaultZoom={19} defaultCenter={mapPosition}>
-        <Marker
-          google={props.google}
-          draggable={true}
-          // onDragEnd={this.onMarkerDragEnd}
-          position={markerPosition}
-        />
-        <Marker />
-        <InfoWindow
-          position={{
-            lat: markerPosition.lat + 0.0001,
-            lng: markerPosition.lng
-          }}
-        >
-          <div>
-            <span style={{ padding: 0, margin: 0 }}>aaa</span>
-          </div>
-        </InfoWindow>
-      </GoogleMap>
+      <>
+        <GoogleMap google={props.google} defaultZoom={19} defaultCenter={mapPosition}>
+          <Marker
+            google={props.google}
+            draggable={true}
+            // onDragEnd={this.onMarkerDragEnd}
+            position={markerPosition}
+          />
+          <Marker />
+          <InfoWindow
+            position={{
+              lat: markerPosition.lat + 0.0001,
+              lng: markerPosition.lng
+            }}
+          >
+            <div>
+              <span style={{ padding: 0, margin: 0 }}>aaa</span>
+            </div>
+          </InfoWindow>
+        </GoogleMap>
+      </>
     ))
   );
 
