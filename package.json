@@ -12,6 +12,7 @@
     "react-geocode": "^0.1.2",
     "react-google-autocomplete": "^1.1.0",
     "react-google-maps": "^9.4.5",
+    "react-intl-tel-input": "^7.0.1",
     "react-load-script": "^0.0.6",
     "react-places-autocomplete": "^7.2.1",
     "react-router-dom": "^5.0.0",

@@ -36,7 +36,8 @@
 }
 
 #HostList-header #Top-tapMenu {
-  margin: auto;
+  /* margin: auto; */
+  text-align: right;
 }
 
 #HostList-header #Top-tapMenu .tap {

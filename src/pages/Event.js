@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Header from "../component/common/header/Header";
-import { Slide, Experience, NavBar, Place, Reviews } from "../component/Host";
+import { JoinBar, Slide, Experience, NavBar, Place, Reviews } from "../component/Event";
 import "./Event.css";
 import Axios from "axios";
-import JoinHostBar from "../component/Host/JoinHostBar";
 
-export default function Event({ match }) {
-  const hostId = match.params.id;
+export default function Event(props) {
+  const hostId = props.match.params.id;
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -36,8 +35,9 @@ export default function Event({ match }) {
       <div style={{ padding: "2% 5%" }}>
         <Experience />
         <Reviews />
+        <h3>Place & Amenities</h3>
         <Place />
-        <JoinHostBar />
+        <JoinBar />
       </div>
     </>
   );

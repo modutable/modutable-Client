@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Events.css";
 import { Input, DatePicker, Select, Icon } from "antd";
 import Header from "../component/common/header/Header";
-import HostListEntry from "../component/Hosts/HostListEntry";
+import EventListEntry from "../component/Events/EventListEntry";
 import queryString from "query-string";
 import Axios from "axios";
 
@@ -45,7 +45,7 @@ export default function Events({ location }) {
       <div id="HostList-contents">
         <h2 style={{ color: "black", marginBottom: "5%" }}>Events available by request</h2>
         {data.map(hostData => {
-          return <HostListEntry key={hostData.id} data={hostData} />;
+          return <EventListEntry key={hostData.id} data={hostData} />;
         })}
       </div>
       <div>Footer</div>

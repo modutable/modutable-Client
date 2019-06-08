@@ -94,13 +94,17 @@ class SignUp extends React.Component {
             </div>
             <a href="http://localhost:3001/auth/facebook" className="login-units">
               <button className="sotialButton" style={fbStyle}>
-                <img src={fblogo} style={{ width: "20px", float: "left" }} />
+                <img src={fblogo} style={{ width: "20px", float: "left" }} alt="FBLogo" />
                 Sign up with Facebook
               </button>
             </a>
             <a href="http://localhost:3001/auth/google" className="login-units">
               <button className="sotialButton" style={googleStyle}>
-                <img src={googlelogo} style={{ width: "26px", float: "left", margin: "5px 0" }} />
+                <img
+                  src={googlelogo}
+                  style={{ width: "26px", float: "left", margin: "5px 0" }}
+                  alt="GoogleLogo"
+                />
                 Sign up with Google
               </button>
             </a>

@@ -1,0 +1,52 @@
+.CreateEvent {
+  width: 100%;
+  height: 100%;
+}
+
+.CreateEvent-header {
+  width: 100%;
+  height: 10%;
+  display: flex;
+}
+
+.CreateEvent-logoBox {
+  width: 50%;
+  height: 100%;
+  display: flex;
+}
+
+.CreateEvent-buttonBox {
+  width: 50%;
+  display: flex;
+}
+
+.CreateEvent-logo {
+  height: 70%;
+  margin: auto;
+  margin-left: 10%;
+}
+
+.CreateEvent-header #Top-tapMenu {
+  margin: auto;
+  margin-right: 20%;
+}
+
+.CreateEvent-header .tap {
+  background-color: #f28058;
+}
+
+#CreateEvent-body {
+  padding: 5%;
+  width: 100%;
+  background-color: #f6f6f6;
+}
+
+.CreateEvent-saveBox {
+  padding-top: 5%;
+  width: 100%;
+  display: flex;
+}
+
+.CreateEvent-button {
+  margin: auto;
+}

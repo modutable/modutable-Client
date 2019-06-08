@@ -21,7 +21,6 @@ export default function Place() {
         />
         <Marker />
         <InfoWindow
-          onClose={""}
           position={{
             lat: markerPosition.lat + 0.0001,
             lng: markerPosition.lng
@@ -37,21 +36,20 @@ export default function Place() {
 
   return (
     <>
-      <h3>Place & Amenities</h3>
       <div
         id="Place"
         style={{
           marginBottom: "150px",
           padding: "2% 5%",
           width: "100%",
-          height: "50vh",
+          height: "40vh",
           border: "1px solid red"
         }}
       >
         <AsyncMap
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`}
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: "100%" }} />}
+          containerElement={<div style={{ height: "100%", position: "relative" }} />}
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>

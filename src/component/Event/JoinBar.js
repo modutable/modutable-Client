@@ -1,6 +1,6 @@
 import React from "react";
 import { Checkbox, Button } from "antd";
-import "./JoinHostBar.css";
+import "./JoinBar.css";
 
 export default function JoinHostBar() {
   return (

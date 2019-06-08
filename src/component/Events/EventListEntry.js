@@ -1,9 +1,9 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import "./HostListEntry.css";
+import "./EventListEntry.css";
 import { Rate } from "antd";
 
-export default withRouter(function HostListEntry(props) {
+export default withRouter(function EventListEntry(props) {
   const food = require("../../img/food.jpeg");
   const userImg = require("../../img/user.png");
   const { title, rating, classification } = props.data;
@@ -11,7 +11,7 @@ export default withRouter(function HostListEntry(props) {
   console.log(props);
 
   const _onClick = () => {
-    props.history.push("/host/3");
+    props.history.push("/event/3");
   };
 
   return (
