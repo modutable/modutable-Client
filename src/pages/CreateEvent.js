@@ -1,9 +1,10 @@
 import "./CreateEvent.css";
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import TabButton from "../component/common/header/TabButton";
 import Stages from "../component/CreateEvent/Stages";
 import Profile from "../component/CreateEvent/Profile/Profile";
-import { Button } from "antd";
+import { Button, Alert } from "antd";
 import Description from "../component/CreateEvent/Description/Description";
 import EventPlace from "../component/CreateEvent/EventPlace/EventPlace";
 
@@ -11,11 +12,15 @@ export default class CreateEvent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      show: "none",
+      phone: null,
+      address: null,
       steps: "first",
       PFState: "process",
       VFState: "wait",
       place: "wait"
     };
+
     this.first = {
       steps: "first",
       PFState: "process",
@@ -36,22 +41,6 @@ export default class CreateEvent extends Component {
     };
   }
 
-  _stepHandler = e => {
-    if (e.target.id === "Save") {
-      if (this.state.steps === "first") {
-        this.setState(this.second);
-      } else {
-        this.setState(this.last);
-      }
-    } else {
-      if (this.state.steps === "second") {
-        this.setState(this.first);
-      } else {
-        this.setState(this.second);
-      }
-    }
-  };
-
   render() {
     return (
       <div className="CreateEvent">
@@ -66,12 +55,22 @@ export default class CreateEvent extends Component {
         <div id="CreateEvent-body">
           <Stages stepsState={this.state} />
 
-          {(() => {
-            if (this.state.steps === "first") return <Profile />;
-            if (this.state.steps === "second") return <Description />;
-            if (this.state.steps === "last") return <EventPlace />;
-          })()}
+          <Router>
+            <Switch>
+              <Route path="/createEvent/profile" component={Profile} />
+              <Route path="/createEvent/description" component={Description} />
+              <Route path="/createEvent/eventPlace" component={EventPlace} />
+            </Switch>
+          </Router>
 
+          <div>
+            <Alert
+              message="Phone number & Address Must fill"
+              type="error"
+              showIcon
+              style={{ display: this.state.show }}
+            />
+          </div>
           <div className="CreateEvent-saveBox">
             <Button
               id="Prev"

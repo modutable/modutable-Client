@@ -2,7 +2,7 @@ import React from "react";
 import ProfilePicture from "./ProfilePicture";
 import Information from "./Information";
 
-export default function Profile() {
+export default function Profile(props) {
   return (
     <div>
       <ProfilePicture />
