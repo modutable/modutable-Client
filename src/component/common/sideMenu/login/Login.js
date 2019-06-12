@@ -93,7 +93,11 @@ export default class Login extends React.Component {
             </a>
             <a href="http://localhost:3001/auth/google" className="login-units">
               <button className="sotialButton login-units" style={googleStyle}>
-                <img src={googlelogo} style={{ width: "26px", float: "left", margin: "5px 0" }} />
+                <img
+                  src={googlelogo}
+                  style={{ width: "26px", float: "left", margin: "5px 0" }}
+                  alt="googleLogo"
+                />
                 Log in with Google
               </button>
             </a>

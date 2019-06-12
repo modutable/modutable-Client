@@ -1,0 +1,14 @@
+.stages {
+  width: 80%;
+  height: 10%;
+  margin: auto;
+}
+
+.stages .ant-steps-item-process .ant-steps-icon,
+.stages .ant-steps-item-finish .ant-steps-icon {
+  color: #f28058 !important;
+}
+
+.stages .ant-steps-item-finish > .ant-steps-item-content > .ant-steps-item-title::after {
+  background-color: #f28058 !important;
+}

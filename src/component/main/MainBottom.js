@@ -1,14 +1,15 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { Input, Button, DatePicker, Select, Icon } from "antd";
 import "./MainBottom.css";
 import AutoInput from "../../component/common/header/AutoInput";
-import Axios from "axios";
 
 export default withRouter(function MainBottom(props) {
   const city = useRef("");
   const date = useRef({});
   const guests = useRef("");
+
+  const guestArray = [1, 2, 3, 4, 5];
 
   const _setCity = n => {
     city.current = n;
@@ -23,9 +24,11 @@ export default withRouter(function MainBottom(props) {
   const { Option } = Select;
 
   const _onClick = e => {
-    console.log(city);
+    console.log(city.current);
     props.history.push(
-      `/search?query=${city.current}&date=${date.current}&guests=${guests.current}`
+      `/search?query=${city.current.formatted_address}&date=${date.current}&guests=${
+        guests.current
+      }`
     );
   };
 
@@ -52,21 +55,13 @@ export default withRouter(function MainBottom(props) {
             icon={<Icon type="user" />}
             defaultValue="Guests"
           >
-            <Option value="1">
-              <Icon type="user" /> Guest 1
-            </Option>
-            <Option value="2">
-              <Icon type="user" /> Guest 2
-            </Option>
-            <Option value="3">
-              <Icon type="user" /> Guest 3
-            </Option>
-            <Option value="4">
-              <Icon type="user" /> Guest 4
-            </Option>
-            <Option value="5">
-              <Icon type="user" /> Guest 5
-            </Option>
+            {guestArray.map((guest, i) => {
+              return (
+                <Option key={i} value={guest}>
+                  <Icon type="user" /> Guest {guest}
+                </Option>
+              );
+            })}
           </Select>
         </InputGroup>
       </div>

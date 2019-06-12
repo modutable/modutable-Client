@@ -25,8 +25,18 @@ export default function Unconnect(props) {
             signUpOnClick();
           }}
         >
-          {" "}
           Sign up
+        </Button>
+      </div>
+      <div>
+        <Button
+          className="SideMenu-Button"
+          onClick={() => {
+            sideMenuClose();
+            loginOnClick();
+          }}
+        >
+          Be come Host
         </Button>
       </div>
     </>

@@ -2,29 +2,27 @@ import React, { useState, useEffect } from "react";
 import "./Events.css";
 import { Input, DatePicker, Select, Icon } from "antd";
 import Header from "../component/common/header/Header";
-import HostListEntry from "../component/Hosts/HostListEntry";
+import EventListEntry from "../component/Events/EventListEntry";
 import queryString from "query-string";
 import Axios from "axios";
 
 export default function Events({ location }) {
-  const values = queryString.parse(location.search);
+  const { date, guests, query } = queryString.parse(location.search);
   const URL = process.env.REACT_APP_URL;
 
-  console.log(URL);
-
-  const [query, setQuery] = useState("");
-  const [date, setDate] = useState({});
-  const [guests, setGuests] = useState("");
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const _getData = async () => {
-      const { data } = await Axios.get(URL + "/events");
-      console.log(data);
-      setData(data);
+      const searchData = await Axios.get(
+        `${URL}/events?opendate=${date}&guests=${guests}&address=${query}`
+      );
+      console.log(searchData.data);
+      setData(searchData.data);
     };
+
     _getData();
-  }, [URL]);
+  }, [URL, date, guests, query]);
 
   const InputGroup = Input.Group;
   return (
@@ -45,7 +43,7 @@ export default function Events({ location }) {
       <div id="HostList-contents">
         <h2 style={{ color: "black", marginBottom: "5%" }}>Events available by request</h2>
         {data.map(hostData => {
-          return <HostListEntry key={hostData.id} data={hostData} />;
+          return <EventListEntry key={hostData.id} data={hostData} />;
         })}
       </div>
       <div>Footer</div>

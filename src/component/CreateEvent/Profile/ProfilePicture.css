@@ -1,0 +1,31 @@
+.ProfilePicture {
+  padding: 2%;
+  border-radius: 4px;
+  background-color: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(223, 226, 231);
+  border-image: initial;
+  margin-top: 5%;
+}
+
+.ProfilePicture-Box {
+  display: flex;
+  width: 100%;
+}
+
+.ProfilePicture-units {
+  margin-top: 5%;
+}
+
+.ProfilePicture-img {
+  width: 70px;
+  height: 70px;
+  margin: auto;
+  border-radius: 4px;
+}
+
+.ProfilePicture-button {
+  margin: auto;
+  margin-bottom: 10px;
+}
