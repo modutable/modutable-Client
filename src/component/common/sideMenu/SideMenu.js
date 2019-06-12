@@ -21,11 +21,8 @@ export default function SideMenu(props) {
 
   localStorage.setItem("token", 123);
 
-  console.log("111", Boolean(localStorage.getItem("token")));
-
   return (
     <>
-      {console.log(signUpVisible)}
       <Drawer title={<div />} placement="right" onClose={onClick} visible={visible}>
         {localStorage.getItem("token") ? (
           <Connect />

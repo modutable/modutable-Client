@@ -7,24 +7,22 @@ import queryString from "query-string";
 import Axios from "axios";
 
 export default function Events({ location }) {
-  const values = queryString.parse(location.search);
+  const { date, guests, query } = queryString.parse(location.search);
   const URL = process.env.REACT_APP_URL;
 
-  console.log(URL);
-
-  const [query, setQuery] = useState("");
-  const [date, setDate] = useState({});
-  const [guests, setGuests] = useState("");
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const _getData = async () => {
-      const { data } = await Axios.get(URL + "/events");
-      console.log(data);
-      setData(data);
+      const searchData = await Axios.get(
+        `${URL}/events?opendate=${date}&guests=${guests}&address=${query}`
+      );
+      console.log(searchData.data);
+      setData(searchData.data);
     };
+
     _getData();
-  }, [URL]);
+  }, [URL, date, guests, query]);
 
   const InputGroup = Input.Group;
   return (

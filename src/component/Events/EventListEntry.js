@@ -5,31 +5,35 @@ import { Rate } from "antd";
 
 export default withRouter(function EventListEntry(props) {
   const food = require("../../img/food.jpeg");
-  const userImg = require("../../img/user.png");
-  const { title, rating, classification } = props.data;
+  const { id, title, profile, reviewRating, mealsType, userName, address } = props.data;
 
   console.log(props);
 
   const _onClick = () => {
-    props.history.push("/event/3");
+    props.history.push("/event/" + id);
   };
 
   return (
     <div id="Entry-box" onClick={_onClick}>
       <div id="Entry-img" style={{ background: "url(" + food + ")" }} />
       <div id="Entry-description">
-        <div id="Entry-userImg" style={{ background: "url(" + userImg + ")" }} />
-        <div id="Entry-description-hostArea/name">
-          <h4>Hosted by Celine in Seoul</h4>
+        <div id="Entry-userImg" style={{ background: "url(" + profile + ")" }} />
+        <div className="Entry-units">
+          <h3 className="Entry-unit">
+            Hosted by<span style={{ color: "#F28058", fontWeight: "bold" }}> {userName} </span> in{" "}
+            {address}
+          </h3>
         </div>
-        <div id="Entry-description-hostClassification">
-          <h4>{classification}</h4>
+        <div className="Entry-units">
+          <h3 className="Entry-unit" style={{ backgroundColor: "#F6F6F6", width: "20%" }}>
+            {mealsType}
+          </h3>
         </div>
-        <div id="Entry-description-hostTitle">
-          <h4>{title}</h4>
+        <div className="Entry-units">
+          <h3 className="Entry-unit">{title}</h3>
         </div>
-        <div id="Entry-description-hostRate">
-          <Rate disabled allowHalf defaultValue={rating} />
+        <div className="Entry-units">
+          <Rate className="Entry-unit" disabled allowHalf defaultValue={reviewRating} />
         </div>
       </div>
     </div>

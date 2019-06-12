@@ -1,6 +1,6 @@
 import React from "react";
 import "./ProfilePicture.css";
-import Uploader from "./Uploader";
+import Uploader from "../../common/uploader/Uploader";
 
 export default function ProfilePicture() {
   return (
@@ -13,7 +13,7 @@ export default function ProfilePicture() {
         <img src="" className="ProfilePicture-img" />
       </div>
       <div className="ProfilePicture-Box ProfilePicture-units">
-        <Uploader />
+        <Uploader link={"https://www.mocky.io/v2/5cc8019d300000980a055e76"} />
       </div>
     </div>
   );

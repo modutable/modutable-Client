@@ -4,13 +4,15 @@ import "../CreateEvent/Stages.css";
 
 export default function Stages(props) {
   const { Step } = Steps;
-  const { PFState, VFState, place } = props.stepsState;
+  const { PFState, VFState, photo } = props.stepsState;
+
+  console.log(PFState, VFState, photo);
   return (
     <div className="stages">
       <Steps>
         <Step status={PFState} title="Profile" icon={<Icon type="user" />} />
         <Step status={VFState} title="Verification" icon={<Icon type="solution" />} />
-        <Step status={place} title="Place" icon={<Icon type="environment" />} />
+        <Step status={photo} title="Photo" icon={<Icon type="camera" />} />
       </Steps>
     </div>
   );

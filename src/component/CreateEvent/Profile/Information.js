@@ -5,18 +5,21 @@ import "react-intl-tel-input/dist/main.css";
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import Geocode from "react-geocode";
 import Autocomplete from "react-google-autocomplete";
-import { Icon } from "antd";
+import { Icon, Alert } from "antd";
 import { debounce } from "lodash";
+import { changeNumber, changeAddress } from "../../../store/modules/createProfile";
+import { connect } from "react-redux";
 
 const API_KEY = process.env.REACT_APP_google_API_KEY;
 
 Geocode.setApiKey(API_KEY);
 Geocode.enableDebug();
 
-export default class Information extends Component {
+class Information extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      toggle: false,
       query: "",
       mapPosition: { lat: 0, lng: 0 },
       markerPosition: { lat: 0, lng: 0 }
@@ -27,7 +30,6 @@ export default class Information extends Component {
     Geocode.fromAddress(address).then(
       response => {
         const { lat, lng } = response.results[0].geometry.location;
-        this.props.address(address);
         this.setState({ query: address, mapPosition: { lat, lng }, markerPosition: { lat, lng } });
       },
       error => {
@@ -37,8 +39,17 @@ export default class Information extends Component {
   };
 
   _onPlaceSelected = ({ formatted_address }) => {
-    console.log(formatted_address);
+    this.props.changeAddress(formatted_address);
     this._queryHandler(formatted_address);
+  };
+
+  _onChangedPhone = (form, value, { dialCode }) => {
+    if (form) {
+      this.props.changeNumber(dialCode + ") " + value);
+      this.setState({ toggle: false });
+    } else {
+      this.setState({ toggle: true });
+    }
   };
 
   render() {
@@ -73,13 +84,9 @@ export default class Information extends Component {
             <Icon type="search" style={{ position: "absolute", top: 15, right: 10 }} />
           </div>
           <GoogleMap google={props.google} defaultZoom={19} defaultCenter={this.state.mapPosition}>
-            <Marker
-              google={props.google}
-              draggable={true}
-              // onDragEnd={this.onMarkerDragEnd}
-              position={this.state.markerPosition}
-            />
+            <Marker google={props.google} draggable={true} position={this.state.markerPosition} />
             <Marker />
+
             <InfoWindow
               position={{
                 lat: this.state.markerPosition.lat + 0.0001,
@@ -94,23 +101,34 @@ export default class Information extends Component {
         </>
       ))
     );
+
     return (
       <div className="Information">
-        {console.log("렌더됨")}
         <div className="Information-box">
           <h1>Information</h1>
           <h3>Eatwith is all about people! Help future guests get to know you.</h3>
         </div>
         <p />
+
         <div className="Information-box">
           <h3 style={{ fontWeight: "bold" }}>Phone Number</h3>
           <IntlTelInput
             containerClassName="intl-tel-input"
             inputClassName="form-control"
-            onPhoneNumberChange={debounce(this.props.number, 500)}
+            onPhoneNumberChange={debounce(this._onChangedPhone, 500)}
           />
         </div>
+
         <p />
+
+        <div>
+          <Alert
+            message="Phone number & Address Must fill"
+            type="error"
+            showIcon
+            style={this.state.toggle ? { display: "block" } : { display: "none" }}
+          />
+        </div>
         <div>
           <h3 style={{ fontWeight: "bold" }}>Address</h3>
 
@@ -137,3 +155,20 @@ export default class Information extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ createProfile }) => ({
+  number: createProfile.number,
+  address: createProfile.address
+});
+
+// props 로 넣어줄 액션 생성함수
+const mapDispatchToProps = dispatch => ({
+  changeNumber: number => dispatch(changeNumber(number)),
+  changeAddress: address => dispatch(changeAddress(address))
+});
+
+// 컴포넌트에 리덕스 스토어를 연동해줄 때에는 connect 함수 사용
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Information);

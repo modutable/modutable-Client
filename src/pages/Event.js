@@ -5,8 +5,10 @@ import TabButton from "../component/common/header/TabButton";
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import Autocomplete from "react-google-autocomplete";
 import { Icon } from "antd";
+import Axios from "axios";
 
 const API_KEY = process.env.REACT_APP_google_API_KEY;
+const URL = process.env.REACT_APP_URL;
 
 export default function Event(props) {
   const hostId = props.match.params.id;
@@ -14,9 +16,16 @@ export default function Event(props) {
   const [mapPosition, setMapPosition] = useState({ lat: 37.566535, lng: 126.9779692 });
   const [markerPosition, setMarkerPosition] = useState({ lat: 37.566535, lng: 126.9779692 });
 
+  const { title } = data;
+
   useEffect(() => {
-    // Axios;
-  }, []);
+    const _getData = async () => {
+      const selectData = await Axios.get(`${URL}/events/${hostId}`);
+      console.log(selectData.data);
+      setData(selectData.data);
+    };
+    _getData();
+  }, [hostId]);
 
   const onPlaceSelected = () => {};
 
@@ -90,17 +99,17 @@ export default function Event(props) {
 
       <div className="Event-Header">
         <div className="Event-logoBox">
-          <img src={require("../img/blackLogo.png")} className="Event-logo" />
+          <img src={require("../img/blackLogo.png")} className="Event-logo" alt="logo" />
         </div>
         <TabButton />
       </div>
 
       <Slide />
 
-      <h1 id="Event-name">title</h1>
+      <h1 id="Event-name">{title}</h1>
       <NavBar />
       <div style={{ padding: "2% 5%" }}>
-        <Experience />
+        <Experience data={data} />
         <Reviews />
 
         <h3>Place & Amenities</h3>

@@ -2,22 +2,28 @@ import React from "react";
 import { Icon } from "antd";
 import "./Experience.css";
 
-export default function Experience() {
-  const iconType = ["clock-circle", "environment", "bell", "team"];
+export default function Experience(props) {
+  const {} = props;
 
   return (
     <div id="Experience">
       <div className="box ex_iconBox">
-        {iconType.map((entry, i) => {
-          return (
-            <div className="box ex_entry" key={entry + 1}>
-              <Icon className="ex_icon" key={entry + 2} type={entry} style={{ color: "#F28058" }} />
-              <h3 className="ex_text" key={entry + 3}>
-                cccccccc
-              </h3>
-            </div>
-          );
-        })}
+        <div className="box ex_entry">
+          <Icon className="ex_icon" type="bell" />
+          <h3 className="ex_text">cccccccc</h3>
+        </div>
+        <div className="box ex_entry">
+          <Icon className="ex_icon" type="clock-circle" />
+          <h3 className="ex_text">cccccccc</h3>
+        </div>
+        <div className="box ex_entry">
+          <Icon className="ex_icon" type="environment" />
+          <h3 className="ex_text">cccccccc</h3>
+        </div>
+        <div className="box ex_entry">
+          <Icon className="ex_icon" type="team" />
+          <h3 className="ex_text">cccccccc</h3>
+        </div>
       </div>
       <div id="ex_description">
         <h3 id="ex_description_title">A WORD ABOUT THE EXPERIENCE</h3>

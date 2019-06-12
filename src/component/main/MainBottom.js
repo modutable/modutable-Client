@@ -1,9 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { Input, Button, DatePicker, Select, Icon } from "antd";
 import "./MainBottom.css";
 import AutoInput from "../../component/common/header/AutoInput";
-import Axios from "axios";
 
 export default withRouter(function MainBottom(props) {
   const city = useRef("");
@@ -25,9 +24,11 @@ export default withRouter(function MainBottom(props) {
   const { Option } = Select;
 
   const _onClick = e => {
-    console.log(city);
+    console.log(city.current);
     props.history.push(
-      `/search?query=${city.current}&date=${date.current}&guests=${guests.current}`
+      `/search?query=${city.current.formatted_address}&date=${date.current}&guests=${
+        guests.current
+      }`
     );
   };
 

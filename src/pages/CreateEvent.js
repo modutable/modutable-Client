@@ -1,45 +1,79 @@
 import "./CreateEvent.css";
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import TabButton from "../component/common/header/TabButton";
 import Stages from "../component/CreateEvent/Stages";
 import Profile from "../component/CreateEvent/Profile/Profile";
 import { Button, Alert } from "antd";
 import Description from "../component/CreateEvent/Description/Description";
-import EventPlace from "../component/CreateEvent/EventPlace/EventPlace";
+import photo from "../component/CreateEvent/Photo/Photo";
+import { connect } from "react-redux";
+import { changeStep } from "../store/modules/createProfile";
 
-export default class CreateEvent extends Component {
+class CreateEvent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: "none",
-      phone: null,
-      address: null,
-      steps: "first",
-      PFState: "process",
-      VFState: "wait",
-      place: "wait"
+      toggle: false
     };
 
     this.first = {
-      steps: "first",
+      step: "first",
       PFState: "process",
       VFState: "wait",
-      place: "wait"
+      photo: "wait"
     };
+
     this.second = {
-      steps: "second",
+      step: "second",
       PFState: "finish",
       VFState: "process",
-      place: "wait"
+      photo: "wait"
     };
+
     this.last = {
-      steps: "last",
+      step: "last",
       PFState: "finish",
       VFState: "finish",
-      place: "process"
+      photo: "process"
     };
   }
+
+  _stepHandler = e => {
+    if (e.target.id === "save") {
+      if (this.props.step === "first") {
+        if (this.props.address && this.props.number) {
+          this.props.changeStep(this.second);
+          this.props.history.push("/createEvent/description");
+        } else {
+          this.setState({ toggle: true });
+        }
+      } else if (this.props.step === "second") {
+        if (
+          this.props.experience &&
+          this.props.minGuest &&
+          this.props.maxGuest &&
+          this.props.title &&
+          this.props.deadlineDate &&
+          this.props.startDate &&
+          this.props.intro
+        ) {
+          this.props.changeStep(this.last);
+          this.props.history.push("/createEvent/place");
+        } else {
+          this.setState({ toggle: true });
+        }
+      }
+    } else {
+      if (this.props.step === "second") {
+        this.props.changeStep(this.first);
+        this.props.history.goBack();
+      } else {
+        this.props.changeStep(this.second);
+        this.props.history.goBack();
+      }
+    }
+  };
 
   render() {
     return (
@@ -53,34 +87,31 @@ export default class CreateEvent extends Component {
           </div>
         </div>
         <div id="CreateEvent-body">
-          <Stages stepsState={this.state} />
-
-          <Router>
-            <Switch>
-              <Route path="/createEvent/profile" component={Profile} />
-              <Route path="/createEvent/description" component={Description} />
-              <Route path="/createEvent/eventPlace" component={EventPlace} />
-            </Switch>
-          </Router>
-
+          <Stages stepsState={this.props} />
+          <Switch>
+            <Route path="/createEvent/profile" component={Profile} />
+            <Route path="/createEvent/description" component={Description} />
+            <Route path="/createEvent/photo" component={photo} />
+          </Switch>
           <div>
             <Alert
               message="Phone number & Address Must fill"
               type="error"
               showIcon
-              style={{ display: this.state.show }}
+              style={this.state.toggle ? { display: "block" } : { display: "none" }}
             />
           </div>
           <div className="CreateEvent-saveBox">
+            {console.log("step >>>>>", this.props.step)}
             <Button
-              id="Prev"
-              style={{ display: this.state.steps !== "first" ? "block" : "none" }}
+              id="prev"
+              style={{ display: this.props.step === "first" ? "none" : "block" }}
               className="CreateEvent-button"
               onClick={this._stepHandler}
             >
               Prev
             </Button>
-            <Button id="Save" className="CreateEvent-button" onClick={this._stepHandler}>
+            <Button id="save" className="CreateEvent-button" onClick={this._stepHandler}>
               Save
             </Button>
           </div>
@@ -89,3 +120,30 @@ export default class CreateEvent extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ createProfile, createDescription }) => ({
+  number: createProfile.number,
+  address: createProfile.address,
+  step: createProfile.step,
+  PFState: createProfile.PFState,
+  VFState: createProfile.VFState,
+  photo: createProfile.place,
+  experience: createDescription.experience,
+  minGuest: createDescription.minGuest,
+  maxGuest: createDescription.maxGuest,
+  title: createDescription.title,
+  intro: createDescription.intro,
+  startDate: createDescription.startDate,
+  deadlineDate: createDescription.deadlineDate
+});
+
+// props 로 넣어줄 액션 생성함수
+const mapDispatchToProps = dispatch => ({
+  changeStep: data => dispatch(changeStep(data))
+});
+
+// 컴포넌트에 리덕스 스토어를 연동해줄 때에는 connect 함수 사용
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CreateEvent);

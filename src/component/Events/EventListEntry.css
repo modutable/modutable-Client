@@ -38,3 +38,13 @@
   border: 8px solid white;
   border-radius: 4em;
 }
+
+.Entry-units {
+  width: 100%;
+  height: 20%;
+  display: flex;
+}
+
+.Entry-unit {
+  margin: auto;
+}
