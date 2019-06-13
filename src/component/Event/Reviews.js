@@ -1,60 +1,47 @@
-import React, { Component } from "react";
-import Slider from "react-slick";
-import "./Reviews.css";
+import React, { useState, useEffect } from "react";
 
-export default function Reviews() {
-  var settings = {
-    infinite: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
+import "./Reviews.css";
+import { Rate } from "antd";
+import Axios from "axios";
+const URL = process.env.REACT_APP_URL;
+
+export default function Reviews(props) {
+  const { id } = props;
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    const _getData = async () => {
+      const { data } = await Axios.get(`${URL}/events/reviews/${id}`);
+      setReviews(data);
+    };
+
+    _getData();
+  }, [id, setReviews]);
+
   return (
     <div className="reviews">
-      <h2> Responsive </h2>
-      <Slider {...settings}>
-        <div style={{ border: "1px solid red", width: "50px" }}>
-          <h3>1</h3>
+      <h3 style={{ fontWeight: "bold" }}> Reviews </h3>
+      {reviews.map((ele, i) => (
+        <div className="review_Box" key={i}>
+          <div className="review_pictureBox review_flex">
+            <div className="review_margin">
+              <img className="review_img" src={ele.user.profileImg} alt="profile" />
+            </div>
+          </div>
+          <div className="review_contentBox review_flex">
+            <div className="review_margin" style={{ textAlign: "center" }}>
+              <div>
+                {ele.user.firstName} {ele.user.lastName}
+              </div>
+              <Rate disabled allowHalf defaultValue={4.5} />
+              <div>{ele.review_date.slice(0, 10)}</div>
+            </div>
+          </div>
+          <div className="review_textBox review_flex">
+            <div className="review_margin">{ele.review_contents}</div>
+          </div>
         </div>
-        <div>
-          <h3>2</h3>
-        </div>
-        <div>
-          <h3>3</h3>
-        </div>
-        <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-      </Slider>
+      ))}
     </div>
   );
 }

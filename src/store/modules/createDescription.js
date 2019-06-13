@@ -1,10 +1,10 @@
-const CHANGE_EXPERIENCE = "counter/CHANGE_EXPERIENCE";
-const CHANGE_MINGUEST = "counter/CHANGE_MINGUEST";
-const CHANGE_MAXGUEST = "counter/CHANGE_MAXGUEST";
-const CHANGE_TITLE = "counter/CHANGE_TITLE";
-const CHANGE_INTRO = "counter/CHANGE_INTRO";
-const CHANGE_STARTEVENT = "counter/CHANGE_STARTEVENT";
-const CHANGE_DEADLINE = "counter/CHANGE_DEADLINE";
+const CHANGE_EXPERIENCE = "Description/CHANGE_EXPERIENCE";
+const CHANGE_MINGUEST = "Description/CHANGE_MINGUEST";
+const CHANGE_MAXGUEST = "Description/CHANGE_MAXGUEST";
+const CHANGE_TITLE = "Description/CHANGE_TITLE";
+const CHANGE_INTRO = "Description/CHANGE_INTRO";
+const CHANGE_STARTEVENT = "Description/CHANGE_STARTEVENT";
+const CHANGE_DEADLINE = "Description/CHANGE_DEADLINE";
 
 export const changeExperience = experience => ({ type: CHANGE_EXPERIENCE, experience });
 export const changeMinGuest = minGuest => ({ type: CHANGE_MINGUEST, minGuest });

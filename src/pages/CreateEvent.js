@@ -2,7 +2,7 @@ import "./CreateEvent.css";
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import TabButton from "../component/common/header/TabButton";
-import Stages from "../component/CreateEvent/Stages";
+import Stages from "../component/CreateEvent/stages/Stages";
 import Profile from "../component/CreateEvent/Profile/Profile";
 import { Button, Alert } from "antd";
 import Description from "../component/CreateEvent/Description/Description";
