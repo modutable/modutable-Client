@@ -7,8 +7,13 @@ import Axios from "axios";
 const URL = process.env.REACT_APP_URL;
 
 function JoinBar(props) {
-  const { id, preparefoods } = props;
+  const { id } = props;
+  const [preparefoods, setPreparefoods] = useState([]);
   const [foodNames, setFoodNames] = useState([]);
+
+  useEffect(() => {
+    setPreparefoods(props.preparefoods);
+  }, [props.preparefoods]);
 
   const _postData = () => {
     Axios.post(
@@ -17,7 +22,9 @@ function JoinBar(props) {
       {
         headers: { authorization: localStorage.getItem("token") }
       }
-    ).then(data => console.log(data));
+    ).then(res => {
+      console.log(res);
+    });
   };
 
   const _selectHandler = ({ target }) => {
@@ -43,11 +50,6 @@ function JoinBar(props) {
     }
   };
 
-  localStorage.setItem(
-    "token",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJJbi15b3VuZyIsImxhc3ROYW1lIjoiSnVuZyIsImVtYWlsIjoiaml5NTUyMEBuYXRlLmNvbSIsInByb2ZpbGVJbWciOiJodHRwczovL3BsYXRmb3JtLWxvb2thc2lkZS5mYnNieC5jb20vcGxhdGZvcm0vcHJvZmlsZXBpYy8_YXNpZD0yMDkxMDU1NjA0MzM3MTE3JmhlaWdodD01MCZ3aWR0aD01MCZleHQ9MTU2MjQ3ODk1NSZoYXNoPUFlUnlueHQyMER4U0Q0MWYiLCJpZCI6NjcsImlhdCI6MTU1OTg4Njk1NSwiZXhwIjoxNTYwNDkxNzU1fQ.qmHaEZU03hSR_OJoTVK4ObZDfOQqSmqNCElAwZ74EDw"
-  );
-
   return (
     <div className="box JoinHostBar-container">
       {console.log(foodNames)}
@@ -57,6 +59,7 @@ function JoinBar(props) {
             return (
               <Checkbox
                 className="JoinHostBar-checkBox"
+                disabled={Boolean(food.state)}
                 value={food.name}
                 onChange={_selectHandler}
                 key={i}

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
 import "./NavBar.css";
+import { Icon } from "antd";
 
 export default function NavBar() {
   const scrollToTop = () => {
@@ -46,7 +47,7 @@ export default function NavBar() {
         </Link>
       </ul>
       <div id="NavBar-topButton" onClick={scrollToTop}>
-        Top
+        <Icon className="NavBar_topButton_icon" type="to-top" />
       </div>
     </div>
   );
