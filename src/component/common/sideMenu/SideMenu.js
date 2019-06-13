@@ -19,8 +19,6 @@ export default function SideMenu(props) {
     signUpVisible ? setSignUpVisible(false) : setSignUpVisible(true);
   };
 
-  localStorage.setItem("token", 123);
-
   return (
     <>
       <Drawer title={<div />} placement="right" onClose={onClick} visible={visible}>

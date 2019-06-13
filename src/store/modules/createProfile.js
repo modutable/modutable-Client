@@ -1,6 +1,6 @@
-const CHANGE_INPUTNUM = "counter/CHANGE_NUMINPUT";
-const CHANGE_INPUTADDRESS = "counter/CHANGE_ADDRESSINPUT";
-const CHANGE_STEP = "counter/CHANGE_STEP";
+const CHANGE_INPUTNUM = "Profile/CHANGE_NUMINPUT";
+const CHANGE_INPUTADDRESS = "Profile/CHANGE_ADDRESSINPUT";
+const CHANGE_STEP = "Profile/CHANGE_STEP";
 
 export const changeNumber = number => ({ type: CHANGE_INPUTNUM, number });
 export const changeAddress = address => ({ type: CHANGE_INPUTADDRESS, address });

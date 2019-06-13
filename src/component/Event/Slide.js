@@ -1,22 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Slide.css";
 import Slider from "react-slick";
+import { connect } from "react-redux";
 
-export default function Slide() {
-  const a = require("../../img/1.jpeg");
-  const b = require("../../img/2.jpeg");
-  const c = require("../../img/3.jpeg");
-  const d = require("../../img/4.jpeg");
-
-  const [images, setImagaes] = useState([]);
-  const [image, setImage] = useState(images[0]);
-
-  const array = [a, b, c, d];
-
-  function onChange(a, b, c) {
-    console.log(a, b, c);
-  }
-
+function Slide({ images }) {
   var settings = {
     dots: true,
     focusOnSelect: true,
@@ -31,11 +18,10 @@ export default function Slide() {
   return (
     <div className="slider-box">
       <Slider {...settings}>
-        {array.map((image, i) => {
-          console.log(image);
+        {images.map((image, i) => {
           return (
             <div key={i} className="slider-pages">
-              <img className="slider-img" src={image} alt={"img" + i} />
+              <img className="slider-img" src={image.url} alt={"img" + i} />
             </div>
           );
         })}
@@ -43,3 +29,9 @@ export default function Slide() {
     </div>
   );
 }
+
+const mapStateToProps = ({ viewEvent }) => ({
+  images: viewEvent.images
+});
+
+export default connect(mapStateToProps)(Slide);

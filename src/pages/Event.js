@@ -1,31 +1,63 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { changeData } from "../store/modules/viewEvent";
+
 import { JoinBar, Slide, Experience, NavBar, Reviews } from "../component/Event";
-import "./Event.css";
 import TabButton from "../component/common/header/TabButton";
+import "./Event.css";
+import { Icon } from "antd";
+
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import Autocomplete from "react-google-autocomplete";
-import { Icon } from "antd";
+import Geocode from "react-geocode";
 import Axios from "axios";
 
 const API_KEY = process.env.REACT_APP_google_API_KEY;
 const URL = process.env.REACT_APP_URL;
 
-export default function Event(props) {
-  const hostId = props.match.params.id;
-  const [data, setData] = useState({});
-  const [mapPosition, setMapPosition] = useState({ lat: 37.566535, lng: 126.9779692 });
-  const [markerPosition, setMarkerPosition] = useState({ lat: 37.566535, lng: 126.9779692 });
+Geocode.setApiKey(API_KEY);
+Geocode.enableDebug();
 
-  const { title } = data;
+//function 시작;;
+function Event(props) {
+  const hostId = props.match.params.id;
+  const [mapPosition, setMapPosition] = useState({ lat: 0, lng: 0 });
+  const [markerPosition, setMarkerPosition] = useState({ lat: 0, lng: 0 });
+
+  console.log(props);
+  const { address, title, changeData, id } = props;
 
   useEffect(() => {
+    console.log("나도 실행 됐다 .");
     const _getData = async () => {
       const selectData = await Axios.get(`${URL}/events/${hostId}`);
       console.log(selectData.data);
-      setData(selectData.data);
+
+      changeData(selectData.data);
     };
+
     _getData();
-  }, [hostId]);
+  }, [changeData, hostId]);
+
+  useEffect(() => {
+    console.log("나 실행 됐다 .");
+    const _queryHandler = address => {
+      Geocode.fromAddress(address).then(
+        response => {
+          console.log(address);
+          const { lat, lng } = response.results[0].geometry.location;
+          setMapPosition({ lat, lng });
+          setMarkerPosition({ lat, lng });
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    };
+    if (address) {
+      _queryHandler(address);
+    }
+  }, [address]);
 
   const onPlaceSelected = () => {};
 
@@ -47,7 +79,7 @@ export default function Event(props) {
             }}
           >
             <div>
-              <span style={{ padding: 0, margin: 0 }}>aaa</span>
+              <span style={{ padding: 0, margin: 0 }}>{address}</span>
             </div>
           </InfoWindow>
           <div
@@ -83,6 +115,7 @@ export default function Event(props) {
       </>
     ))
   );
+
   return (
     <>
       <link
@@ -109,8 +142,8 @@ export default function Event(props) {
       <h1 id="Event-name">{title}</h1>
       <NavBar />
       <div style={{ padding: "2% 5%" }}>
-        <Experience data={data} />
-        <Reviews />
+        <Experience />
+        <Reviews id={hostId} />
 
         <h3>Place & Amenities</h3>
         <div
@@ -119,8 +152,7 @@ export default function Event(props) {
             marginBottom: "150px",
             padding: "2% 5%",
             width: "100%",
-            height: "40vh",
-            border: "1px solid red"
+            height: "40vh"
           }}
         >
           <AsyncMap
@@ -136,3 +168,16 @@ export default function Event(props) {
     </>
   );
 }
+
+const mapStateToProps = ({ viewEvent }) => ({ address: viewEvent.address, title: viewEvent.title });
+// props 로 넣어줄 액션 생성함수
+const mapDispatchToProps = dispatch => ({
+  // changeNumber: number => dispatch(changeNumber(number))
+  changeData: data => dispatch(changeData(data))
+});
+
+// 컴포넌트에 리덕스 스토어를 연동해줄 때에는 connect 함수 사용
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Event);

@@ -1,6 +1,6 @@
 import React from "react";
 import { Steps, Icon } from "antd";
-import "../CreateEvent/Stages.css";
+import "./Stages.css";
 
 export default function Stages(props) {
   const { Step } = Steps;
