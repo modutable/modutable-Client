@@ -9,6 +9,7 @@ import Axios from "axios";
 export default function Events({ location }) {
   const { date, guests, query } = queryString.parse(location.search);
   const URL = process.env.REACT_APP_URL;
+  const InputGroup = Input.Group;
 
   const [data, setData] = useState([]);
 
@@ -24,7 +25,6 @@ export default function Events({ location }) {
     _getData();
   }, [URL, date, guests, query]);
 
-  const InputGroup = Input.Group;
   return (
     <>
       <Header id="HostList-header" />

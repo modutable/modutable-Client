@@ -1,13 +1,13 @@
 import React, { useRef, useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import { Input, Button, DatePicker, Select, Icon } from "antd";
+import { Input, Button, DatePicker, Select, Icon, message } from "antd";
 import "./MainBottom.css";
 import AutoInput from "../../component/common/header/AutoInput";
 
 export default withRouter(function MainBottom(props) {
-  const city = useRef("");
-  const date = useRef({});
-  const guests = useRef("");
+  const city = useRef(null);
+  const date = useRef(null);
+  const guests = useRef(null);
 
   const guestArray = [1, 2, 3, 4, 5];
 
@@ -24,12 +24,15 @@ export default withRouter(function MainBottom(props) {
   const { Option } = Select;
 
   const _onClick = e => {
-    console.log(city.current);
-    props.history.push(
-      `/search?query=${city.current.formatted_address}&date=${date.current}&guests=${
-        guests.current
-      }`
-    );
+    if (city.current && date.current && guests.current) {
+      props.history.push(
+        `/search?query=${city.current.formatted_address}&
+        date=${date.current}&
+        guests=${guests.current}`
+      );
+    } else {
+      message.error("전부 입력해주셔야합니다.");
+    }
   };
 
   return (

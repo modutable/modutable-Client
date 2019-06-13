@@ -4,6 +4,7 @@ import { Input, Drawer } from "antd";
 import fblogo from "../../../../img/fblogo.png";
 import googlelogo from "../../../../img/googlelogo.png";
 import axios from "axios";
+const URL = process.env.REACT_APP_URL;
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -30,7 +31,7 @@ export default class Login extends React.Component {
     axios.defaults.withCredentials = true;
     axios({
       method: "get",
-      url: "http://localhost:3001/auth/login_process",
+      url: `${URL}/auth/login_process`,
       params: this.state,
       headers: {
         "Content-Type": "application/json"
@@ -85,13 +86,13 @@ export default class Login extends React.Component {
               <h3>Welcome back!</h3>
             </div>
 
-            <a href="http://localhost:3001/auth/facebook" className="login-units">
+            <a href={`${URL}/auth/facebook`} className="login-units">
               <button className="sotialButton" style={fbStyle}>
                 <img src={fblogo} style={{ width: "20px", float: "left" }} alt={"facebookLogo"} />
                 Log in with Facebook
               </button>
             </a>
-            <a href="http://localhost:3001/auth/google" className="login-units">
+            <a href={`${URL}/auth/google`} className="login-units">
               <button className="sotialButton login-units" style={googleStyle}>
                 <img
                   src={googlelogo}

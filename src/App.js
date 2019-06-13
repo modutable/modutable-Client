@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import "antd/dist/antd.css";
 import { Main, Events, Event, Account, CreateEvent } from "./pages";
-import App2 from "./component/common/login/App2";
+import GetSocialToken from "./component/common/sideMenu/login/GetSocialToken";
 
 class App extends Component {
   render() {
@@ -11,7 +11,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route path="/sotialTokenQuery" component={App2} />
+          <Route path="/sotialTokenQuery" component={GetSocialToken} />
           <Route path="/search" component={Events} />
           <Route path="/event/:id" component={Event} />
           <Route path="/account" component={Account} />

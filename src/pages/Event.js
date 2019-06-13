@@ -59,7 +59,9 @@ function Event(props) {
     }
   }, [address]);
 
-  const onPlaceSelected = () => {};
+  const onPlaceSelected = place => {
+    props.history.push(`/search?query=${place.formatted_address}`);
+  };
 
   const AsyncMap = withScriptjs(
     withGoogleMap(props => (
@@ -143,6 +145,7 @@ function Event(props) {
       <NavBar />
       <div style={{ padding: "2% 5%" }}>
         <Experience />
+
         <Reviews id={hostId} />
 
         <h3>Place & Amenities</h3>
@@ -156,7 +159,7 @@ function Event(props) {
           }}
         >
           <AsyncMap
-            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`}
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places&language=en`}
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={<div style={{ height: "100%" }} />}
             mapElement={<div style={{ height: `100%` }} />}
