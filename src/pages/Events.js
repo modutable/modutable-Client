@@ -11,16 +11,14 @@ export default function Events({ location }) {
   const URL = process.env.REACT_APP_URL;
   const InputGroup = Input.Group;
 
-  console.log("저기", date, guests, query);
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const _getData = async () => {
-      console.log("여기", date, guests);
       const searchData = await Axios.get(
         `${URL}/events?opendate=${date}&guests=${guests}&address=${query}`
       );
-      console.log("크하", searchData.data);
+      console.log(searchData.data);
       setData(searchData.data);
     };
 

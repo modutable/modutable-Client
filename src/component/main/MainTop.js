@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Row } from "antd";
 import "./MainTop.css";
 import TabButton from "../common/header/TabButton";

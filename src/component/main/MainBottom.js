@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { withRouter } from "react-router-dom";
 import { Input, Button, DatePicker, Select, Icon, message } from "antd";
 import "./MainBottom.css";
@@ -27,7 +27,6 @@ export default withRouter(function MainBottom(props) {
 
   const _onClick = e => {
     if (city.current && date.current && guests.current) {
-      console.log("요기", city.current, date.current, guests.current);
       props.history.push(
         `/search?query=${city.current.formatted_address}&date=${date.current}&guests=${
           guests.current
@@ -45,7 +44,7 @@ export default withRouter(function MainBottom(props) {
       </h3>
 
       <div className="Bottom-searchBar">
-        <AutoInput onChange={_setCity} city={city} />
+        <AutoInput onChange={_setCity} flag="main" />
       </div>
 
       <div className="Bottom-searchBar">

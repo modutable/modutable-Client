@@ -1,4 +1,4 @@
-const CHANGE_USERDATA = "Profile/CHANGE_USERDATA";
+const CHANGE_USERDATA = "joinUser/CHANGE_USERDATA";
 
 export const changeUserData = data => ({ type: CHANGE_USERDATA, data });
 
@@ -13,7 +13,7 @@ const initialState = {
   profileImg: null
 };
 
-export default function createProfile(state = initialState, action) {
+export default function joinUser(state = initialState, action) {
   switch (action.type) {
     case CHANGE_USERDATA:
       return {
