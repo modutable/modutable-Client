@@ -16,9 +16,6 @@
 #Entry-img {
   height: 50%;
   width: 100%;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  background-size: cover !important;
 }
 
 #Entry-description {

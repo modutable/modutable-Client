@@ -26,7 +26,7 @@ export default function AutoInput(props) {
           }}
           onPlaceSelected={onPlaceSelected}
           types={["(regions)"]}
-          placeholder="Search"
+          placeholder="Search the city and select it from the space below."
           value={props.city}
         />
         <Icon type="search" style={{ position: "absolute", right: 10, top: 15 }} />

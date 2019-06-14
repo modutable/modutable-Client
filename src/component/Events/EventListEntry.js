@@ -4,8 +4,7 @@ import "./EventListEntry.css";
 import { Rate } from "antd";
 
 export default withRouter(function EventListEntry(props) {
-  const food = require("../../img/food.jpeg");
-  const { id, title, profile, reviewRating, mealsType, userName, address } = props.data;
+  const { id, title, profile, images, reviewRating, mealsType, userName, address } = props.data;
 
   console.log(props);
 
@@ -15,9 +14,9 @@ export default withRouter(function EventListEntry(props) {
 
   return (
     <div id="Entry-box" onClick={_onClick}>
-      <div id="Entry-img" style={{ background: "url(" + food + ")" }} />
+      <img id="Entry-img" src={images} alt="event title" />
       <div id="Entry-description">
-        <div id="Entry-userImg" style={{ background: "url(" + profile + ")" }} />
+        <img id="Entry-userImg" src={profile} alt="profile" />
         <div className="Entry-units">
           <h3 className="Entry-unit">
             Hosted by<span style={{ color: "#F28058", fontWeight: "bold" }}> {userName} </span> in{" "}

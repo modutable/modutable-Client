@@ -15,9 +15,11 @@ export default withRouter(function MainBottom(props) {
     city.current = n;
   };
   const _setDate = n => {
+    console.log(n);
     date.current = n._d;
   };
   const _setGuests = n => {
+    console.log(n);
     guests.current = n;
   };
   const InputGroup = Input.Group;
@@ -25,10 +27,11 @@ export default withRouter(function MainBottom(props) {
 
   const _onClick = e => {
     if (city.current && date.current && guests.current) {
+      console.log("요기", city.current, date.current, guests.current);
       props.history.push(
-        `/search?query=${city.current.formatted_address}&
-        date=${date.current}&
-        guests=${guests.current}`
+        `/search?query=${city.current.formatted_address}&date=${date.current}&guests=${
+          guests.current
+        }`
       );
     } else {
       message.error("전부 입력해주셔야합니다.");

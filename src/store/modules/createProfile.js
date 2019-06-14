@@ -1,26 +1,26 @@
-const CHANGE_INPUTNUM = "Profile/CHANGE_NUMINPUT";
+const CHANGE_INPUTPHONE = "Profile/CHANGE_INPUTPHONE";
 const CHANGE_INPUTADDRESS = "Profile/CHANGE_ADDRESSINPUT";
 const CHANGE_STEP = "Profile/CHANGE_STEP";
 
-export const changeNumber = number => ({ type: CHANGE_INPUTNUM, number });
+export const changePhone = phone => ({ type: CHANGE_INPUTPHONE, phone });
 export const changeAddress = address => ({ type: CHANGE_INPUTADDRESS, address });
 export const changeStep = data => ({ type: CHANGE_STEP, data });
 
 const initialState = {
-  number: null,
+  phone: null,
   address: null,
   step: "first",
   PFState: "process",
   VFState: "wait",
-  photo: "wait"
+  photoState: "wait"
 };
 
 export default function createProfile(state = initialState, action) {
   switch (action.type) {
-    case CHANGE_INPUTNUM:
+    case CHANGE_INPUTPHONE:
       return {
         ...state,
-        number: action.number
+        phone: action.phone
       };
     case CHANGE_INPUTADDRESS:
       console.log("action =>", action.address);
@@ -35,7 +35,7 @@ export default function createProfile(state = initialState, action) {
         step: action.data.step,
         PFState: action.data.PFState,
         VFState: action.data.VFState,
-        photo: action.data.photo
+        photoState: action.data.photoState
       };
     default:
       return state;

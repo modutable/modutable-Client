@@ -7,7 +7,7 @@ import Geocode from "react-geocode";
 import Autocomplete from "react-google-autocomplete";
 import { Icon, Alert } from "antd";
 import { debounce } from "lodash";
-import { changeNumber, changeAddress } from "../../../store/modules/createProfile";
+import { changePhone, changeAddress } from "../../../store/modules/createProfile";
 import { connect } from "react-redux";
 
 const API_KEY = process.env.REACT_APP_google_API_KEY;
@@ -45,7 +45,7 @@ class Information extends Component {
 
   _onChangedPhone = (form, value, { dialCode }) => {
     if (form) {
-      this.props.changeNumber(dialCode + ") " + value);
+      this.props.changePhone(dialCode + ") " + value);
       this.setState({ toggle: false });
     } else {
       this.setState({ toggle: true });
@@ -163,7 +163,7 @@ const mapStateToProps = ({ createProfile }) => ({
 
 // props 로 넣어줄 액션 생성함수
 const mapDispatchToProps = dispatch => ({
-  changeNumber: number => dispatch(changeNumber(number)),
+  changePhone: number => dispatch(changePhone(number)),
   changeAddress: address => dispatch(changeAddress(address))
 });
 

@@ -52,7 +52,7 @@ export default withRouter(function Connect(props) {
         <Button
           className="SideMenu-Button"
           onClick={() => {
-            history.push("/CreateEvent");
+            history.push("/createEvent/profile");
           }}
         >
           Be Come Host
