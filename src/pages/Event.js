@@ -25,7 +25,7 @@ function Event(props) {
   const [markerPosition, setMarkerPosition] = useState({ lat: 0, lng: 0 });
 
   console.log(props);
-  const { address, title, changeData, id } = props;
+  const { address, title, changeData } = props;
 
   useEffect(() => {
     console.log("나도 실행 됐다 .");

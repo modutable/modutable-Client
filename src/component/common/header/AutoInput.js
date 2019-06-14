@@ -2,11 +2,16 @@ import React from "react";
 import { withGoogleMap, withScriptjs } from "react-google-maps";
 import Autocomplete from "react-google-autocomplete";
 import { Icon } from "antd";
+import { withRouter } from "react-router-dom";
 const API_KEY = process.env.REACT_APP_google_API_KEY;
 
-export default function AutoInput(props) {
+export default withRouter(function AutoInput(props) {
   const onPlaceSelected = place => {
-    props.onChange(place);
+    if (props.flag === "main") {
+      props.onChange(place.formatted_address);
+    } else {
+      props.history.push(`/search?query=${place.formatted_address}`);
+    }
   };
 
   const AsyncMap = withScriptjs(
@@ -26,7 +31,7 @@ export default function AutoInput(props) {
           }}
           onPlaceSelected={onPlaceSelected}
           types={["(regions)"]}
-          placeholder="Search"
+          placeholder="Search the city and select it from the space below."
           value={props.city}
         />
         <Icon type="search" style={{ position: "absolute", right: 10, top: 15 }} />
@@ -43,4 +48,4 @@ export default function AutoInput(props) {
       />
     </div>
   );
-}
+});

@@ -1,8 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
 import { DatePicker } from "antd";
+import { changeStartEvent, changeDeadline } from "../../../../store/modules/createDescription";
 
-export default function Date(props) {
-  const { changeStartEvent, changeDeadline } = props.change;
+function DatePick(props) {
+  const { changeStartEvent, changeDeadline } = props;
 
   const _startDateHandler = ({ _d }) => {
     changeStartEvent(_d);
@@ -42,3 +44,17 @@ export default function Date(props) {
     </div>
   );
 }
+
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = dispatch => ({
+  // changeNumber: number => dispatch(changeNumber(number))
+  changeStartEvent: startDate => dispatch(changeStartEvent(startDate)),
+  changeDeadline: deadline => dispatch(changeDeadline(deadline))
+});
+
+// 컴포넌트에 리덕스 스토어를 연동해줄 때에는 connect 함수 사용
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DatePick);
