@@ -1,0 +1,24 @@
+.card-container {
+  margin-top: 5%;
+}
+
+.card_content {
+  background-color: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(223, 226, 231);
+  border-top: 0;
+  padding: 2%;
+}
+
+.ant-tabs-bar {
+  margin: 0;
+}
+
+.ant-tabs-tab-active {
+  font-weight: bold !important;
+}
+
+.ant-tabs-tab {
+  font-weight: bold !important;
+}

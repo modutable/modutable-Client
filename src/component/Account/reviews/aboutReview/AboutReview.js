@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from "react";
-
-import "./Reviews.css";
-import { Rate } from "antd";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
+import { Rate } from "antd";
+
 const URL = process.env.REACT_APP_URL;
 
-export default function Reviews(props) {
-  const { id, condition } = props;
+export default function AboutReview(props) {
+  const { id } = props;
   const [reviews, setReviews] = useState([]);
-  console.log("ㅏㅇ아아아아아ㅏ아", condition);
+
   useEffect(() => {
     const _getData = async () => {
-      const { data } = await Axios.get(`${URL}/events/reviews/${id}`);
+      const { data } = await Axios.get(`${URL}/events/myreviews/${id}`);
+      console.log("아아아", data);
       setReviews(data);
     };
 
     _getData();
-  }, [condition, id, setReviews]);
+  }, [id, setReviews]);
 
   return (
     <div className="reviews">
       <h3 style={{ fontWeight: "bold" }}> Reviews </h3>
       {reviews.map((ele, i) => (
-        <div className="review_Box" key={i}>
+        <div className="review_Box" key={"about" + i}>
           <div className="review_pictureBox review_flex">
             <div className="review_margin">
               <img className="review_img" src={ele.user.profileImg} alt="profile" />

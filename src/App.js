@@ -17,6 +17,7 @@ function App(props) {
       const userData = await Axios.get(`${URL}/auth/myinfo`, {
         headers: { authorization: localStorage.getItem("token") }
       });
+      console.log("유저정보 셋", typeof userData.data);
       changeUserData(userData.data);
     };
 
