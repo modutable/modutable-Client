@@ -191,7 +191,7 @@ class SignUp extends React.Component {
               </Row>
             </div>
             <div className="inboxGroup">
-              <label title>
+              <label>
                 <input
                   type="checkbox"
                   style={{ position: "absolute", margin: "4px 0 0 -20px" }}

@@ -1,27 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import { Button } from "antd";
 import { withRouter } from "react-router-dom";
 import "./Connect.css";
-import Axios from "axios";
-const URL = process.env.REACT_APP_URL;
 
-export default withRouter(function Connect(props) {
-  const { history } = props;
-
-  const [data, setData] = useState({});
-
-  useEffect(() => {
-    const _getData = async () => {
-      Axios.get(`${URL}/auth/myinfo`, {
-        headers: { authorization: localStorage.getItem("token") }
-      }).then(res => {
-        console.log(res.data);
-        setData(res.data);
-      });
-    };
-
-    _getData();
-  }, []);
+function Connect(props) {
+  const { history, profileImg, firstName, lastName } = props;
+  console.log(props);
 
   const _logoutHandler = () => {
     localStorage.removeItem("token");
@@ -32,7 +17,7 @@ export default withRouter(function Connect(props) {
     <>
       <div className="SideMenu-imgBox">
         <img
-          src={data.profileImg}
+          src={profileImg}
           className="SideMenu-img"
           width="100px"
           height="100px"
@@ -41,7 +26,7 @@ export default withRouter(function Connect(props) {
       </div>
       <div className="SideMenu-Button">
         <h3>Hi! </h3>
-        {data.firstName} {data.lastName}
+        {firstName} {lastName}
       </div>
       <div>
         <Button onClick={() => {}} className="SideMenu-Button">
@@ -69,4 +54,14 @@ export default withRouter(function Connect(props) {
       </div>
     </>
   );
+}
+
+const mapStateToProps = ({ joinUser }) => ({
+  profileImg: joinUser.profileImg,
+  firstName: joinUser.firstName,
+  lastName: joinUser.lastName
 });
+// props 로 넣어줄 액션 생성함수
+
+// 컴포넌트에 리덕스 스토어를 연동해줄 때에는 connect 함수 사용
+export default withRouter(connect(mapStateToProps)(Connect));

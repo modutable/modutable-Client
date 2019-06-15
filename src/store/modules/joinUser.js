@@ -1,6 +1,8 @@
 const CHANGE_USERDATA = "joinUser/CHANGE_USERDATA";
+const CHANGE_USERIMG = "joinUser/CHANGE_USERIMG";
 
 export const changeUserData = data => ({ type: CHANGE_USERDATA, data });
+export const changeUserImg = img => ({ type: CHANGE_USERIMG, img });
 
 const initialState = {
   id: null,
@@ -14,6 +16,7 @@ const initialState = {
 };
 
 export default function joinUser(state = initialState, action) {
+  console.log(action);
   switch (action.type) {
     case CHANGE_USERDATA:
       return {
@@ -26,6 +29,11 @@ export default function joinUser(state = initialState, action) {
         password: action.data.password,
         birthday: action.data.birthday,
         profileImg: action.data.profileImg
+      };
+    case CHANGE_USERIMG:
+      return {
+        ...state,
+        profileImg: action.img
       };
 
     default:

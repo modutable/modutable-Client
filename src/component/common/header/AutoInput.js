@@ -31,7 +31,7 @@ export default withRouter(function AutoInput(props) {
           }}
           onPlaceSelected={onPlaceSelected}
           types={["(regions)"]}
-          placeholder="Search the city and select it from the space below."
+          placeholder="Select it from the space below."
           value={props.city}
         />
         <Icon type="search" style={{ position: "absolute", right: 10, top: 15 }} />

@@ -16,8 +16,8 @@
   transition: top 200ms linear;
 }
 .signUp-close .ant-drawer-content-wrapper {
-  top: -20px;
-  transition: top 200ms linear;
+  top: -60px !important;
+  transition: top 200ms linear !important;
 }
 
 .login .ant-drawer-wrapper-body,
