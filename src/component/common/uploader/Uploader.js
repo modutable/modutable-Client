@@ -4,11 +4,12 @@ import { Upload, Icon, message } from "antd";
 import "./Uploader.css";
 import Axios from "axios";
 import { changeIMGS } from "../../../store/modules/createDescription";
+import { changeUserImg } from "../../../store/modules/joinUser";
 
 function Uploader(props) {
   const Dragger = Upload.Dragger;
 
-  const { flag, changeIMGS, images } = props;
+  const { flag, changeIMGS, changeUserImg, images } = props;
 
   const size = flag === "profile" ? { width: 100, height: 100 } : { width: 800, height: 600 };
 
@@ -51,6 +52,9 @@ function Uploader(props) {
           options.onSuccess(res.data, options.file);
           if (flag === "event") {
             changeIMGS(images.concat(res.data.Location));
+          } else {
+            console.log(res.data);
+            changeUserImg(res.data.Location);
           }
         })
         .catch(err => {
@@ -92,7 +96,8 @@ const mapStateToProps = ({ createDescription }) => ({
 // props 로 넣어줄 액션 생성함수
 const mapDispatchToProps = dispatch => ({
   // changeNumber: number => dispatch(changeNumber(number))
-  changeIMGS: images => dispatch(changeIMGS(images))
+  changeIMGS: images => dispatch(changeIMGS(images)),
+  changeUserImg: img => dispatch(changeUserImg(img))
 });
 
 // 컴포넌트에 리덕스 스토어를 연동해줄 때에는 connect 함수 사용

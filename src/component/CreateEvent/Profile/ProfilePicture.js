@@ -1,26 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import "./ProfilePicture.css";
 import Uploader from "../../common/uploader/Uploader";
-import Axios from "axios";
-const URL = process.env.REACT_APP_URL;
 const LAMDAURL = process.env.REACT_APP_LAMDAURL;
 
-export default function ProfilePicture() {
-  const [data, setData] = useState({});
+function ProfilePicture(props) {
+  const { profileImg } = props;
+  console.log(profileImg);
 
-  useEffect(() => {
-    const _getData = () => {
-      Axios.get(`${URL}/auth/myinfo`, {
-        headers: { authorization: localStorage.getItem("token") }
-      }).then(res => {
-        setData(res.data);
-      });
-    };
-
-    _getData();
-  }, []);
-
-  console.log(LAMDAURL);
   return (
     <div className="ProfilePicture">
       <div className="ProfilePicture-textBox">
@@ -28,7 +15,7 @@ export default function ProfilePicture() {
         <h3>Don't forget a smile is the best way to introduce yourself to others.</h3>
       </div>
       <div className="ProfilePicture-Box ProfilePicture-units">
-        <img src={data.profileImg} className="ProfilePicture-img" alt="profile" />
+        <img src={profileImg} className="ProfilePicture-img" alt="profile" />
       </div>
       <div className="ProfilePicture-Box ProfilePicture-units">
         <Uploader link={LAMDAURL} flag="profile" />
@@ -36,3 +23,9 @@ export default function ProfilePicture() {
     </div>
   );
 }
+
+const mapStateToProps = ({ joinUser }) => ({ profileImg: joinUser.profileImg });
+// props 로 넣어줄 액션 생성함수
+
+// 컴포넌트에 리덕스 스토어를 연동해줄 때에는 connect 함수 사용
+export default connect(mapStateToProps)(ProfilePicture);

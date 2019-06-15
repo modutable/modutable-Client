@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import "antd/dist/antd.css";
 import { Main, Events, Event, Account, CreateEvent } from "./pages";
 import GetSocialToken from "./component/common/sideMenu/login/GetSocialToken";
-import { connect } from "react-redux";
-import Axios from "axios";
 import { changeUserData } from "./store/modules/joinUser";
+import Axios from "axios";
 const URL = process.env.REACT_APP_URL;
 
 function App(props) {
@@ -17,12 +17,12 @@ function App(props) {
       const userData = await Axios.get(`${URL}/auth/myinfo`, {
         headers: { authorization: localStorage.getItem("token") }
       });
-      console.log(changeUserData);
-      changeUserData(userData);
+      changeUserData(userData.data);
     };
 
     _getData();
   }, [changeUserData]);
+
   return (
     <Router>
       <Switch>
@@ -36,9 +36,17 @@ function App(props) {
     </Router>
   );
 }
+<<<<<<< HEAD
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = dispatch => ({
+=======
+
+const mapStateToProps = () => ({});
+// props 로 넣어줄 액션 생성함
+const mapDispatchToProps = dispatch => ({
+  // changeNumber: number => dispatch(changeNumber(number))
+>>>>>>> a922ad6c69e0cc5f9aae5b6c797899302f3abb6a
   changeUserData: data => dispatch(changeUserData(data))
 });
 
