@@ -9,5 +9,6 @@ export default combineReducers({
   createProfile,
   createDescription,
   viewEvent,
+
   joinUser
 });

@@ -9,7 +9,12 @@ export default function Tab() {
   const { TabPane } = Tabs;
   const renderTabBar = (props, DefaultTabBar) => (
     <Sticky bottomOffset={80}>
-      {({ style }) => <DefaultTabBar {...props} style={{ ...style, zIndex: 1, marginTop: "5%" }} />}
+      {({ style }) => (
+        <DefaultTabBar
+          {...props}
+          style={{ ...style, zIndex: 1, marginTop: "5%", backgroundColor: "white" }}
+        />
+      )}
     </Sticky>
   );
   return (

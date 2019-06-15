@@ -1,23 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Tabs } from "antd";
 import "./AccountReviews.css";
-import Axios from "axios";
-const URL = process.env.REACT_APP_URL;
+import AboutReview from "./aboutReview/AboutReview";
+import ByReview from "./byReview/ByReview";
 
 const { TabPane } = Tabs;
 
 function AccountReviews(props) {
   const { id } = props;
-
-  useEffect(() => {
-    const _getData = () => {
-      Axios.get(`${URL}/events/userreviews/${id}`).then(res => {
-        console.log(res.data);
-      });
-    };
-    _getData();
-  }, [id]);
 
   return (
     <div className="card-container ">
@@ -25,11 +16,14 @@ function AccountReviews(props) {
         <TabPane tab="Reviews about you" key="1" className="card_content">
           Write a review after a Eatwith experience. Reviews you've received will be visible both
           here and on your public profile
+          <p />
+          <AboutReview id={id} />
         </TabPane>
         <TabPane tab="Reviews by you" key="2" className="card_content">
-          <p>Content of Tab Pane 2</p>
-          <p>Content of Tab Pane 2</p>
-          <p>Content of Tab Pane 2</p>
+          Write a review after a Eatwith experience. Reviews you've received will be visible both
+          here and on your public profile
+          <p />
+          <ByReview id={id} />
         </TabPane>
       </Tabs>
     </div>

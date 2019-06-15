@@ -17,6 +17,7 @@ function App(props) {
       const userData = await Axios.get(`${URL}/auth/myinfo`, {
         headers: { authorization: localStorage.getItem("token") }
       });
+      console.log("유저정보 셋", typeof userData.data);
       changeUserData(userData.data);
     };
 
@@ -36,17 +37,11 @@ function App(props) {
     </Router>
   );
 }
-<<<<<<< HEAD
-const mapStateToProps = () => ({});
-
-const mapDispatchToProps = dispatch => ({
-=======
 
 const mapStateToProps = () => ({});
 // props 로 넣어줄 액션 생성함
 const mapDispatchToProps = dispatch => ({
   // changeNumber: number => dispatch(changeNumber(number))
->>>>>>> a922ad6c69e0cc5f9aae5b6c797899302f3abb6a
   changeUserData: data => dispatch(changeUserData(data))
 });
 
