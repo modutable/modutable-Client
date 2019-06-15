@@ -5,8 +5,7 @@
 }
 
 #MainView-top {
-  background: url(https://screen-api.eatwith.com/files/340027/-/scale_crop/2000x700/center/)
-    no-repeat center center;
+  background: url("../img/mainIMG.jpeg") no-repeat center center;
   background-size: cover;
   padding: 5%;
 }

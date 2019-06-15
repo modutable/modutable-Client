@@ -14,6 +14,7 @@ export default function Events({ location }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    console.log(query);
     const _getData = async () => {
       const searchData = await Axios.get(
         `${URL}/events?opendate=${date}&guests=${guests}&address=${query}`
