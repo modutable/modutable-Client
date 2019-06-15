@@ -8,6 +8,7 @@ const API_KEY = process.env.REACT_APP_google_API_KEY;
 export default withRouter(function AutoInput(props) {
   const onPlaceSelected = place => {
     if (props.flag === "main") {
+      console.log(place);
       props.onChange(place.formatted_address);
     } else {
       props.history.push(`/search?query=${place.formatted_address}`);
