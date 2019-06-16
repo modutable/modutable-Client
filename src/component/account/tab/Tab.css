@@ -1,0 +1,18 @@
+.account_content .ProfilePicture {
+  margin-top: 0px !important;
+}
+.ant-tabs-top-bar {
+  margin-top: 0px !important;
+}
+
+.ant-tabs-bar {
+  margin: 0;
+}
+
+.ant-tabs-tab-active {
+  font-weight: bold !important;
+}
+
+.ant-tabs-tab {
+  font-weight: bold !important;
+}

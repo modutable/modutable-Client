@@ -29,7 +29,12 @@ function Connect(props) {
         {firstName} {lastName}
       </div>
       <div>
-        <Button onClick={() => {}} className="SideMenu-Button">
+        <Button
+          onClick={() => {
+            history.push("/account");
+          }}
+          className="SideMenu-Button"
+        >
           My Account
         </Button>
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../component/common/header/Header";
 import "./Account.css";
-import Tap from "../component/Account/tab/Tab";
+import Tap from "../component/account/tab/Tab";
 
 export default function Account() {
   return (

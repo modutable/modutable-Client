@@ -8,7 +8,7 @@ const URL = process.env.REACT_APP_URL;
 export default function Reviews(props) {
   const { id, condition } = props;
   const [reviews, setReviews] = useState([]);
-  console.log("ㅏㅇ아아아아아ㅏ아", condition);
+
   useEffect(() => {
     const _getData = async () => {
       const { data } = await Axios.get(`${URL}/events/reviews/${id}`);

@@ -12,7 +12,11 @@ export default function AboutReview(props) {
     const _getData = async () => {
       const { data } = await Axios.get(`${URL}/events/myreviews/${id}`);
       console.log("아아아", data);
-      setReviews(data);
+      let newArray = [];
+      data.forEach(ele => {
+        newArray = [...newArray, ...ele.events_users];
+      });
+      setReviews(newArray);
     };
 
     _getData();
