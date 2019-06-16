@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { changeData } from "../store/modules/viewEvent";
 
-import { JoinBar, Slide, Experience, NavBar, Reviews } from "../component/Event";
+import { JoinBar, Slide, Experience, NavBar, Reviews } from "../component/event";
 import TabButton from "../component/common/header/TabButton";
 import "./Event.css";
 import { Icon } from "antd";

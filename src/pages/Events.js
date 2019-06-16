@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Events.css";
 import { Input, DatePicker, Select, Icon } from "antd";
 import Header from "../component/common/header/Header";
-import EventListEntry from "../component/Events/EventListEntry";
+import EventListEntry from "../component/events/EventListEntry";
 import queryString from "query-string";
 import Axios from "axios";
 
