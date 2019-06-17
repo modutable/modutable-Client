@@ -6,6 +6,7 @@ import fblogo from "../../../../img/fblogo.png";
 import googlelogo from "../../../../img/googlelogo.png";
 import BirthdayInput from "./BirthdayInput";
 import axios from "axios";
+const URL = process.env.REACT_APP_URL;
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -37,15 +38,16 @@ class SignUp extends React.Component {
     }
     if (flag.includes(false)) return;
     axios
-      .post("http://localhost:3001/auth/signUp", this.state, {
+      .post(`${URL}/auth/signUp`, this.state, {
         headers: { "Content-Type": "application/json" }
       })
       .then(result => {
         if (result.data.message === "already") {
-          document.getElementById("Emailalreadywarning").style.display = "block";
+          document.getElementById("Emailalreadywarning").style.display =
+            "block";
         } else {
           localStorage.setItem("token", result.data);
-          /* 모달끄기 */
+          this.props.history.go();
         }
       })
       .catch(error => {
@@ -92,13 +94,17 @@ class SignUp extends React.Component {
             <div className="top">
               <h3>Join Eatwith</h3>
             </div>
-            <a href="http://localhost:3001/auth/facebook" className="login-units">
+            <a href={`${URL}/auth/facebook`} className="login-units">
               <button className="sotialButton" style={fbStyle}>
-                <img src={fblogo} style={{ width: "20px", float: "left" }} alt="FBLogo" />
+                <img
+                  src={fblogo}
+                  style={{ width: "20px", float: "left" }}
+                  alt="FBLogo"
+                />
                 Sign up with Facebook
               </button>
             </a>
-            <a href="http://localhost:3001/auth/google" className="login-units">
+            <a href={`${URL}/auth/google`} className="login-units">
               <button className="sotialButton" style={googleStyle}>
                 <img
                   src={googlelogo}
@@ -175,7 +181,8 @@ class SignUp extends React.Component {
             <hr />
             <h5>Birthday</h5>
             <p className="birthDay-treat">
-              Don't forget to sign up for the newsletter to receive a surprise treat!
+              Don't forget to sign up for the newsletter to receive a surprise
+              treat!
             </p>
             <div className="BirthDateInput">
               <Row>
@@ -199,8 +206,8 @@ class SignUp extends React.Component {
                     this.setState({ boxCheck: e.target.checked });
                   }}
                 />{" "}
-                Yes! I want to receive exclusive Eatwith offers, travel inspo and alo of the food in
-                my inbox 😋
+                Yes! I want to receive exclusive Eatwith offers, travel inspo
+                and alo of the food in my inbox 😋
               </label>
             </div>
             <button
@@ -211,8 +218,11 @@ class SignUp extends React.Component {
             >
               Let's go!
             </button>
-            <span style={{ fontSize: "14px", color: "#8f8e87", fontWeight: "400" }}>
-              By signing ip, I agree to Eatwith's Terms & Conditions, Trust and Privacy Policy
+            <span
+              style={{ fontSize: "14px", color: "#8f8e87", fontWeight: "400" }}
+            >
+              By signing ip, I agree to Eatwith's Terms & Conditions, Trust and
+              Privacy Policy
             </span>
             <p className="footer">
               Already have an account?{" "}
@@ -220,13 +230,17 @@ class SignUp extends React.Component {
                 Log in now
               </a>
             </p>
-            <p style={{ color: "#8f8e87", fontSize: "11px", lineHeight: "1.1" }}>
+            <p
+              style={{ color: "#8f8e87", fontSize: "11px", lineHeight: "1.1" }}
+            >
               <span>
-                The collected data is used by Vizeat Ltd in order to process your account creation,
-                manage your bookings, personalize your online experience and for marketing purposes
-                should you have given your consent. In accordance with the General Data Protection
-                Rules 2018 regarding personal data protection and the Eatwith Privacy Policy, you
-                have the right to access, rectify or ask for the deletion of your data by writing to
+                The collected data is used by Vizeat Ltd in order to process
+                your account creation, manage your bookings, personalize your
+                online experience and for marketing purposes should you have
+                given your consent. In accordance with the General Data
+                Protection Rules 2018 regarding personal data protection and the
+                Eatwith Privacy Policy, you have the right to access, rectify or
+                ask for the deletion of your data by writing to
                 'jiy8319@gmail.com'
               </span>
             </p>
