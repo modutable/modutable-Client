@@ -11,7 +11,6 @@ export default function ByReview(props) {
   useEffect(() => {
     const _getData = async () => {
       const { data } = await Axios.get(`${URL}/events/userreviews/${id}`);
-      console.log("아아아아", data);
 
       setReviews(data);
     };

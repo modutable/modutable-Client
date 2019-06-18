@@ -23,13 +23,11 @@ export default function createProfile(state = initialState, action) {
         phone: action.phone
       };
     case CHANGE_INPUTADDRESS:
-      console.log("action =>", action.address);
       return {
         ...state,
         address: action.address
       };
     case CHANGE_STEP:
-      console.log("data =>", action.data);
       return {
         ...state,
         step: action.data.step,

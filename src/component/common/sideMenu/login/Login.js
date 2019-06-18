@@ -39,7 +39,6 @@ export default class Login extends React.Component {
     })
       .then(result => {
         /* 모달끄기 */
-        console.log(result.data);
         if (result.data === "fail Login") {
           document.getElementById("fairLogin").style.display = "block";
         } else {

@@ -12,15 +12,12 @@ export default withRouter(function MainBottom(props) {
   const guestArray = [1, 2, 3, 4, 5];
 
   const _setCity = n => {
-    console.log("여기", n);
     city.current = n;
   };
   const _setDate = n => {
-    console.log(n);
     date.current = n._d;
   };
   const _setGuests = n => {
-    console.log(n);
     guests.current = n;
   };
   const InputGroup = Input.Group;
@@ -28,7 +25,6 @@ export default withRouter(function MainBottom(props) {
 
   const _onClick = e => {
     if (city.current && date.current && guests.current) {
-      console.log("!!!!!", city.current, date.current, guests.current);
       props.history.push(
         `/search?query=${city.current}&date=${date.current}&guests=${guests.current}`
       );

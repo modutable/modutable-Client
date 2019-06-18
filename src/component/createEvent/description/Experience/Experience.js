@@ -39,7 +39,6 @@ function Experience(props) {
   const _foodHandler = () => {
     let foods = document.querySelector("#food").value;
     foods = foods.split(",");
-    console.log(foods);
     changeFoods(foods);
   };
 

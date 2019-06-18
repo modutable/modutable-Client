@@ -6,7 +6,6 @@ export default function Stages(props) {
   const { Step } = Steps;
   const { PFState, VFState, photoState } = props.stepsState;
 
-  console.log(PFState, VFState, photoState);
   return (
     <div className="stages">
       <Steps>
