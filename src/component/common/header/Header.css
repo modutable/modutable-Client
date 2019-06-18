@@ -1,6 +1,7 @@
 #HostList-header {
   height: 10%;
   display: flex;
+  background-color: white;
 }
 #HostList-logoBox {
   display: flex;

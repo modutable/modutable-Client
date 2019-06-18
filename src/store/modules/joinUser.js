@@ -16,7 +16,6 @@ const initialState = {
 };
 
 export default function joinUser(state = initialState, action) {
-  console.log(action);
   switch (action.type) {
     case CHANGE_USERDATA:
       return {

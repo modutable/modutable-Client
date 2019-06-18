@@ -3590,6 +3590,11 @@ draft-js@^0.10.0, draft-js@~0.10.0:
     immutable "~3.7.4"
     object-assign "^4.1.0"
 
+dragscroll@0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/dragscroll/-/dragscroll-0.0.8.tgz#de4771e5f3a14d77b583ecef5d38bd9618f27563"
+  integrity sha1-3kdx5fOhTXe1g+zvXTi9lhjydWM=
+
 duplexer@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/duplexer/-/duplexer-0.1.1.tgz#ace6ff808c1ce66b57d1ebf97977acb02334cfc1"
@@ -3604,6 +3609,11 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
+
+easy-bem@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/easy-bem/-/easy-bem-1.0.1.tgz#9b4a7f33da2c334b8dff008c7e923e08dd38b7ef"
+  integrity sha512-yHPzU6johdIZR/UiX8Ucx6I7bFZogtNRJaFH2NVunGUxze3hFJ0S2ANd3LZdaRTOQQd6MItSS45POCF3yQaAgA==
 
 ecc-jsbn@~0.1.1:
   version "0.1.2"
@@ -8816,6 +8826,14 @@ react-google-maps@^9.4.5:
     recompose "^0.26.0"
     scriptjs "^2.5.8"
     warning "^3.0.0"
+
+react-indiana-drag-scroll@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-indiana-drag-scroll/-/react-indiana-drag-scroll-1.1.1.tgz#cca1bc1f335789a7bc55879f27c00db19d984b0f"
+  integrity sha512-nxTp9DYC+U68IvREHjpdm5vq4M9jsTCUyWfVQUxO48P/MHAKmAT5NENISIMCJmmfhnIPztdEZlCZdJZ3FWmBJw==
+  dependencies:
+    classnames "^2.2.6"
+    easy-bem "^1.0.0"
 
 react-intl-tel-input@^7.0.1:
   version "7.0.1"

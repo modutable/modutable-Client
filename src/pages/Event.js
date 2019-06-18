@@ -24,14 +24,11 @@ function Event(props) {
   const [mapPosition, setMapPosition] = useState({ lat: 0, lng: 0 });
   const [markerPosition, setMarkerPosition] = useState({ lat: 0, lng: 0 });
 
-  console.log(props);
   const { address, title, changeData } = props;
 
   useEffect(() => {
-    console.log("나도 실행 됐다 .");
     const _getData = async () => {
       const selectData = await Axios.get(`${URL}/events/${hostId}`);
-      console.log(selectData.data);
 
       changeData(selectData.data);
     };
@@ -40,11 +37,9 @@ function Event(props) {
   }, [changeData, hostId]);
 
   useEffect(() => {
-    console.log("나 실행 됐다 .");
     const _queryHandler = address => {
       Geocode.fromAddress(address).then(
         response => {
-          console.log(address);
           const { lat, lng } = response.results[0].geometry.location;
           setMapPosition({ lat, lng });
           setMarkerPosition({ lat, lng });

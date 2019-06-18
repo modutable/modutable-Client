@@ -27,7 +27,6 @@ const initialState = {
 export default function viewEvent(state = initialState, action) {
   switch (action.type) {
     case CHANGE_EVENTDATA:
-      console.log("get data ==> ", action);
       return {
         ...state,
         address: action.data.address,

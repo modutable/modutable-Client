@@ -6,7 +6,6 @@ import "./Connect.css";
 
 function Connect(props) {
   const { history, profileImg, firstName, lastName } = props;
-  console.log(props);
 
   const _logoutHandler = () => {
     localStorage.removeItem("token");

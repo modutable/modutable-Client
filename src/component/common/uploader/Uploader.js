@@ -48,12 +48,10 @@ function Uploader(props) {
 
       Axios.post(options.action, data, config)
         .then(res => {
-          console.log(res.data);
           options.onSuccess(res.data, options.file);
           if (flag === "event") {
             changeIMGS(images.concat(res.data.Location));
           } else {
-            console.log(res.data);
             changeUserImg(res.data.Location);
           }
         })

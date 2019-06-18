@@ -1,0 +1,61 @@
+.slider_container {
+  width: 100%;
+}
+
+.slider_contentBox {
+  width: 100%;
+  padding: 3%;
+  background-color: #f6f6f6;
+  /* display: flex; */
+  overflow-x: auto;
+}
+
+.slider_content {
+  position: relative;
+
+  width: 220px;
+  height: 250px;
+  padding: 2%;
+  background-color: white;
+  border-radius: 5px;
+  margin-right: 5%;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+  transition: box-shadow ease-in-out 200ms;
+}
+.slider_content_title {
+  margin-bottom: 5%;
+  width: 180px;
+  text-align: center;
+  font-weight: bold;
+  color: #ff916a;
+}
+.slider_content_from {
+  margin-bottom: 5%;
+  text-align: right;
+}
+.slider_content_date {
+  text-align: right;
+}
+.slider_content_mealsType {
+  margin-bottom: 10%;
+  text-align: center;
+  background-color: #f6f6f6;
+  padding: 2%;
+}
+.slider_content_foods {
+  margin-bottom: 10%;
+  display: flex;
+}
+.slider_content_food {
+  text-align: center;
+  margin: auto;
+  width: 40px;
+  padding: 2%;
+  border-radius: 5px;
+  margin-bottom: 5%;
+}
+
+.slider_content_buttonBox {
+  display: flex;
+  width: 100%;
+}
