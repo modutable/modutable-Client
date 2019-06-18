@@ -17,9 +17,12 @@ class GetSocialToken extends Component {
   render() {
     var { search } = this.props.location;
     const values = queryString.parse(search);
+
     localStorage.setItem("token", values.token);
     this._getData();
-    this.props.history.goBack();
+    var backurl = localStorage.getItem("backurl");
+    localStorage.removeItem("backurl");
+    this.props.history.push(backurl);
     return <div />;
   }
 }

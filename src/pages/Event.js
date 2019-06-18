@@ -1,13 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { changeData } from "../store/modules/viewEvent";
+import { Modal } from "antd";
+import Messenger from "../component/messages/Messenger";
 
-import { JoinBar, Slide, Experience, NavBar, Reviews } from "../component/event";
+import {
+  JoinBar,
+  Slide,
+  Experience,
+  NavBar,
+  Reviews
+} from "../component/event";
 import TabButton from "../component/common/header/TabButton";
 import "./Event.css";
 import { Icon } from "antd";
 
-import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
+import {
+  withGoogleMap,
+  GoogleMap,
+  withScriptjs,
+  InfoWindow,
+  Marker
+} from "react-google-maps";
 import Autocomplete from "react-google-autocomplete";
 import Geocode from "react-geocode";
 import Axios from "axios";
@@ -61,7 +75,11 @@ function Event(props) {
   const AsyncMap = withScriptjs(
     withGoogleMap(props => (
       <>
-        <GoogleMap google={props.google} defaultZoom={19} defaultCenter={mapPosition}>
+        <GoogleMap
+          google={props.google}
+          defaultZoom={19}
+          defaultCenter={mapPosition}
+        >
           <Marker
             google={props.google}
             draggable={true}
@@ -106,7 +124,10 @@ function Event(props) {
               placeholder="Search"
               value={props.city}
             />
-            <Icon type="search" style={{ position: "absolute", right: "5%", top: "15px" }} />
+            <Icon
+              type="search"
+              style={{ position: "absolute", right: "5%", top: "15px" }}
+            />
           </div>
         </GoogleMap>
       </>
@@ -129,7 +150,11 @@ function Event(props) {
 
       <div className="Event-Header">
         <div className="Event-logoBox">
-          <img src={require("../img/blackLogo.png")} className="Event-logo" alt="logo" />
+          <img
+            src={require("../img/blackLogo.png")}
+            className="Event-logo"
+            alt="logo"
+          />
         </div>
         <TabButton />
       </div>
@@ -153,21 +178,43 @@ function Event(props) {
             height: "40vh"
           }}
         >
-          <AsyncMap
+          {/*  <AsyncMap
             googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places&language=en`}
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={<div style={{ height: "100%" }} />}
             mapElement={<div style={{ height: `100%` }} />}
-          />
+          /> */}
         </div>
 
+        <Modal
+          title="Basic Modal"
+          visible={true}
+          onOk={() => {
+            console.log(11);
+          }}
+          onCancel={() => {
+            console.log(22);
+          }}
+        >
+          <Messenger props={props} />
+        </Modal>
         <JoinBar />
       </div>
     </>
   );
 }
 
-const mapStateToProps = ({ viewEvent }) => ({ address: viewEvent.address, title: viewEvent.title });
+//파라미터 받는 곳 필요한 리듀서 이름 넣고 이름.필요한 키이름
+const mapStateToProps = ({ viewEvent }) => ({
+  address: viewEvent.address,
+  title: viewEvent.title,
+
+  profileImg: viewEvent.user.profileImg,
+  firstName: viewEvent.user.firstName,
+  lastName: viewEvent.user.lastName,
+  email: viewEvent.user.email,
+  userId: viewEvent.user.id
+});
 // props 로 넣어줄 액션 생성함수
 const mapDispatchToProps = dispatch => ({
   // changeNumber: number => dispatch(changeNumber(number))
