@@ -41,11 +41,11 @@ export default withRouter(
         }
       })
         .then(result => {
-          this.props.history.go();
           if (result.data === "fail Login") {
             document.getElementById("fairLogin").style.display = "block";
           } else {
             localStorage.setItem("token", result.data);
+            this.props.history.go();
           }
         })
         .catch(error => {
@@ -63,7 +63,8 @@ export default withRouter(
     };
     findpassword = () => {
       console.log(this.state.Email);
-      axios.get(`https://modutable.tk/mail?email=${this.state.Email}`).then(result => {
+      axios.get(`${URL}/mail?email=${this.state.Email}`).then(result => {
+
         this.setState({
           findResult: result.data
         });
