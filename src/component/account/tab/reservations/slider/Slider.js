@@ -3,7 +3,6 @@ import "./Slider.css";
 import { Button, Pagination } from "antd";
 import Axios from "axios";
 
-import ScrollContainer from "react-indiana-drag-scroll";
 const URL = process.env.REACT_APP_URL;
 
 const _dataHandler = data => {

@@ -5,6 +5,7 @@ import { Tabs } from "antd";
 import ProfilePicture from "../../createEvent/profile/ProfilePicture";
 import AccountReviews from "./reviews/AccountReviews";
 import Reservations from "./reservations/Reservations";
+import Conversations from "./conversations";
 
 export default function Tab() {
   const { TabPane } = Tabs;
@@ -34,7 +35,9 @@ export default function Tab() {
             tab="Conversations"
             key="2"
             style={{ backgroundColor: "f6f6f6", borderRadius: "4px" }}
-          />
+          >
+            <Conversations />
+          </TabPane>
 
           <TabPane
             tab="Reservations"
