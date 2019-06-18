@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import ConversationList from "../ConversationList";
 import MessageList from "../MessageList";
 import "./Messenger.css";
-import socketio from "socket.io-client";
 import axios from "axios";
+import { getsocket } from "../../common/socket";
 const URL = process.env.REACT_APP_URL;
-const socket = socketio.connect(`http://localhost:3002`);
 
 export default class Messenger extends Component {
   constructor(props) {
     super(props);
+    this.socket = "";
     this.state = {
       otherUser: {},
       myId: 0,
@@ -20,6 +20,7 @@ export default class Messenger extends Component {
   }
   componentDidMount() {
     const bind = this;
+    this.socket = getsocket();
     axios
       .get(`${URL}/messages/talklist`, {
         headers: { authorization: localStorage.getItem("token") }
@@ -30,9 +31,11 @@ export default class Messenger extends Component {
           messages: result.data.messages,
           myId: result.data.myId
         });
-        this.newRoom();
+        if (this.props === {}) {
+          this.newRoom();
+        }
       });
-    socket.on("getMessage", function(data) {
+    this.socket.on("getMessage", function(data) {
       const newMessage = {
         createdAt: new Date(),
         email: data.userInfo.email,
@@ -104,7 +107,7 @@ export default class Messenger extends Component {
       messages: [...this.state.messages, newMessage]
     });
     console.log(newMessage);
-    socket.emit(
+    this.socket.emit(
       "sendMessage",
       Object.assign(newMessage, { token: localStorage.getItem("token") })
     );

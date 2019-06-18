@@ -7,6 +7,8 @@ import { Main, Events, Event, Account, CreateEvent, Password } from "./pages";
 import GetSocialToken from "./component/common/sideMenu/login/GetSocialToken";
 import { changeUserData } from "./store/modules/joinUser";
 import Axios from "axios";
+import { connectSocket } from "./component/common/socket";
+
 const URL = process.env.REACT_APP_URL;
 
 function App(props) {
@@ -17,6 +19,7 @@ function App(props) {
       const userData = await Axios.get(`${URL}/auth/myinfo`, {
         headers: { authorization: localStorage.getItem("token") }
       });
+      connectSocket();
       console.log("유저정보", userData.data);
       changeUserData(userData.data);
     };
