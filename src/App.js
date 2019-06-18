@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import "antd/dist/antd.css";
-import { Main, Events, Event, Account, CreateEvent } from "./pages";
+import { Main, Events, Event, Account, CreateEvent, Password } from "./pages";
 import GetSocialToken from "./component/common/sideMenu/login/GetSocialToken";
 import { changeUserData } from "./store/modules/joinUser";
 import Axios from "axios";
@@ -33,6 +33,7 @@ function App(props) {
         <Route path="/event/:id" component={Event} />
         <Route path="/account" component={Account} />
         <Route path="/createEvent" component={CreateEvent} />
+        <Route path="/password" component={Password} />
       </Switch>
     </Router>
   );
