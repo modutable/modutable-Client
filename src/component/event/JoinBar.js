@@ -1,38 +1,56 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { connect } from "react-redux";
 
-import { Checkbox, Button, message } from "antd";
+import { Checkbox, Button, message, Icon, Dropdown, Menu } from "antd";
 import "./JoinBar.css";
 import Axios from "axios";
 const URL = process.env.REACT_APP_URL;
 
+const getGuestScope = (max, min, join) => {
+  let scopeArr = [];
+  for (let i = min; i <= max - join; i++) {
+    scopeArr = scopeArr.concat(i);
+  }
+
+  return Boolean(scopeArr[0]) ? scopeArr : [];
+};
+
 function JoinBar(props) {
-  const { id } = props;
-  const [preparefoods, setPreparefoods] = useState([]);
+  const { id, preparefoods, guestMax, guestMin, guests } = props;
+
   const [foodNames, setFoodNames] = useState([]);
+  const [joinGuests, setJoinGuests] = useState(null);
+
+  const [scope, setScope] = useState([]);
+
+  const guestScope = useMemo(() => getGuestScope(guestMax, guestMin, guests), [
+    guestMax,
+    guestMin,
+    guests
+  ]);
 
   useEffect(() => {
-    setPreparefoods(props.preparefoods);
-  }, [props.preparefoods]);
+    setScope(guestScope);
+  }, [guestScope]);
 
   const _postData = () => {
     Axios.post(
       `${URL}/events/book/${id}`,
-      { foodNames },
+      { foodNames, guests: joinGuests },
       {
         headers: { authorization: localStorage.getItem("token") }
       }
-    ).then(res => {
-      console.log(res);
+    ).then(({ data }) => {
+      if (data.state === "join") {
+        message.error("You are attending.");
+      }
     });
   };
 
-  const _selectHandler = ({ target }) => {
+  const _foodSelectHandler = ({ target }) => {
     if (target.checked) {
       if (!foodNames.includes(target.value)) {
         setFoodNames(foodNames.concat(target.value));
-      } else {
-        message.error("This is a ");
       }
     } else {
       let index = foodNames.indexOf(target.value);
@@ -50,6 +68,23 @@ function JoinBar(props) {
     }
   };
 
+  const _joinGuestHandler = useCallback(e => {
+    setJoinGuests(e.key);
+  }, []);
+
+  const menu = (
+    <Menu onClick={_joinGuestHandler}>
+      {scope.map(ele => {
+        return (
+          <Menu.Item key={ele}>
+            <Icon type="user" />
+            {ele} guest
+          </Menu.Item>
+        );
+      })}
+    </Menu>
+  );
+
   return (
     <div className="box JoinHostBar-container">
       <div id="JoinHostBar-check">
@@ -60,7 +95,7 @@ function JoinBar(props) {
                 className="JoinHostBar-checkBox"
                 disabled={Boolean(food.state)}
                 value={food.name}
-                onChange={_selectHandler}
+                onChange={_foodSelectHandler}
                 key={i}
               >
                 {food.name}{" "}
@@ -68,6 +103,19 @@ function JoinBar(props) {
             );
           })}
         </div>
+      </div>
+      <div className="JoinHostBar-selectBox">
+        <Dropdown
+          className="JoinHostBar-select"
+          overlay={menu}
+          placement="topCenter"
+          icon={<Icon type="user" />}
+        >
+          <Button>
+            <Icon type="user" />
+            Personnel
+          </Button>
+        </Dropdown>
       </div>
       <div id="JoinHostBar-buttonBox">
         <Button id="JoinHostBar-button" onClick={_buttonHandler}>
@@ -77,9 +125,13 @@ function JoinBar(props) {
     </div>
   );
 }
+
 const mapStateToProps = ({ viewEvent }) => ({
   id: viewEvent.id,
-  preparefoods: viewEvent.preparefoods
+  preparefoods: viewEvent.preparefoods,
+  guestMax: viewEvent.guestMax,
+  guestMin: viewEvent.guestMin,
+  guests: viewEvent.guests
 });
 // props 로 넣어줄 액션 생성함수
 

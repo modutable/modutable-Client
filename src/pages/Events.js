@@ -45,7 +45,6 @@ export default function Events({ location }) {
           return <EventListEntry key={hostData.id} data={hostData} />;
         })}
       </div>
-      <div>Footer</div>
     </>
   );
 }
