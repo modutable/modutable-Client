@@ -5,7 +5,6 @@ import { Icon } from "antd";
 
 export default function NavBar() {
   const scrollToTop = () => {
-    console.log(1);
     scroll.scrollToTop();
   };
 

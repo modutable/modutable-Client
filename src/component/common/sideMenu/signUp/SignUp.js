@@ -6,6 +6,8 @@ import fblogo from "../../../../img/fblogo.png";
 import googlelogo from "../../../../img/googlelogo.png";
 import BirthdayInput from "./BirthdayInput";
 import axios from "axios";
+import AutoInput from "../../header/AutoInput";
+
 const URL = process.env.REACT_APP_URL;
 
 class SignUp extends React.Component {
@@ -22,8 +24,12 @@ class SignUp extends React.Component {
       year: 1900,
       boxCheck: false
     };
+
+    this.city = "";
   }
   submitSignUp = () => {
+    console.log(this.state);
+    console.log(this.city);
     var flag = [];
 
     document.getElementById("Emailalreadywarning").style.display = "none";
@@ -63,10 +69,8 @@ class SignUp extends React.Component {
       return true;
     }
   };
-  changeInput = (inputKind, value) => {
-    var profileObj = {};
-    profileObj[inputKind] = value;
-    this.setState(profileObj);
+  changeInput = value => {
+    this.city = value;
   };
   render() {
     const fbStyle = {
@@ -139,13 +143,12 @@ class SignUp extends React.Component {
               <p className="warningmessage" id="lastNamewarning">
                 Please fill in your last name
               </p>
-              <Input
+              <AutoInput
+                flag="signUp"
                 size="large"
                 className="loginInput"
                 placeholder="Your city"
-                onChange={e => {
-                  this.changeInput("city", e.target.value);
-                }}
+                onChange={this.changeInput}
               />
               <p className="warningmessage" id="citywarning">
                 Please fill in you city

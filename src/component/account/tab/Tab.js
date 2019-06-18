@@ -1,9 +1,10 @@
 import React from "react";
+import "./Tab.css";
 import { StickyContainer, Sticky } from "react-sticky";
 import { Tabs } from "antd";
 import ProfilePicture from "../../createEvent/profile/ProfilePicture";
-import "./Tab.css";
 import AccountReviews from "./reviews/AccountReviews";
+import Reservations from "./reservations/Reservations";
 
 export default function Tab() {
   const { TabPane } = Tabs;
@@ -35,8 +36,12 @@ export default function Tab() {
             style={{ backgroundColor: "f6f6f6", borderRadius: "4px" }}
           />
 
-          <TabPane tab="Reservations" key="3">
-            Content of Tab Pane 3
+          <TabPane
+            tab="Reservations"
+            key="3"
+            style={{ backgroundColor: "f6f6f6", borderRadius: "4px" }}
+          >
+            <Reservations />
           </TabPane>
         </Tabs>
       </StickyContainer>

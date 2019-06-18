@@ -6,8 +6,6 @@ import { Rate } from "antd";
 export default withRouter(function EventListEntry(props) {
   const { id, title, profile, images, reviewRating, mealsType, userName, address } = props.data;
 
-  console.log(props);
-
   const _onClick = () => {
     props.history.push("/event/" + id);
   };

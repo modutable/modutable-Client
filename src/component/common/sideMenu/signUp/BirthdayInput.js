@@ -3,7 +3,6 @@ import { Select } from "antd";
 export default class BirthdayInput extends Component {
   onChange = value => {
     this.props.selectDate(this.props.kind, value);
-    console.log(`selected ${value}`);
   };
 
   render() {

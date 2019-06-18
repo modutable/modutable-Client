@@ -28,7 +28,6 @@ const initialState = {
 export default function createDescription(state = initialState, action) {
   switch (action.type) {
     case CHANGE_EXPERIENCE:
-      console.log(action.experience);
       return {
         ...state,
         experience: action.experience
@@ -59,13 +58,11 @@ export default function createDescription(state = initialState, action) {
         description: action.intro
       };
     case CHANGE_STARTEVENT:
-      console.log(action.startDate);
       return {
         ...state,
         openDate: action.startDate
       };
     case CHANGE_DEADLINE:
-      console.log(action.deadline);
       return {
         ...state,
         deadline: action.deadline
@@ -76,7 +73,6 @@ export default function createDescription(state = initialState, action) {
         images: action.images
       };
     case CHANGE_FOODS:
-      console.log(action.foods);
       return {
         ...state,
         preparefoods: action.foods

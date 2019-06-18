@@ -52,7 +52,6 @@ function JoinBar(props) {
 
   return (
     <div className="box JoinHostBar-container">
-      {console.log(foodNames)}
       <div id="JoinHostBar-check">
         <div style={{ width: "80%", margin: "auto" }}>
           {preparefoods.map((food, i) => {

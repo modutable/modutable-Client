@@ -46,21 +46,11 @@ class CreateEvent extends Component {
       if (this.props.step === "first") {
         if (this.props.address && this.props.phone) {
           this.props.changeStep(this.second);
-          console.log(this.props.sendData);
           this.props.history.push("/createEvent/description");
         } else {
           this.setState({ toggle: true });
         }
       } else if (this.props.step === "second") {
-        console.log(
-          this.props.experience,
-          this.props.guestMin,
-          this.props.guestMax,
-          this.props.title,
-          this.props.deadline,
-          this.props.openDate,
-          this.props.description
-        );
         if (
           this.props.experience &&
           this.props.guestMin &&
@@ -71,22 +61,17 @@ class CreateEvent extends Component {
           this.props.description
         ) {
           this.props.changeStep(this.last);
-          console.log(this.props.sendData);
           this.props.history.push("/createEvent/photo");
         } else {
-          console.log(this.props.sendData);
-
           this.setState({ toggle: true });
         }
       } else if (this.props.step === "last") {
         if (this.props.images.length !== 0) {
-          console.log("마지막", this.props.sendData);
           let data = this.props.sendData;
           Axios.put(`${URL}/events`, data, {
             headers: { authorization: localStorage.getItem("token") }
           })
             .then(res => {
-              console.log(111111111111, res.data);
               this.props.changeStep(this.first);
               this.props.history.push("/");
             })
@@ -99,7 +84,6 @@ class CreateEvent extends Component {
     } else {
       if (this.props.step === "second") {
         this.props.changeStep(this.first);
-        console.log(this.props.sendData);
         this.props.history.goBack();
       } else {
         this.props.changeStep(this.second);
@@ -135,7 +119,6 @@ class CreateEvent extends Component {
             />
           </div>
           <div className="CreateEvent-saveBox">
-            {console.log("step >>>>>", this.props.step)}
             <Button
               id="prev"
               style={{ display: this.props.step === "first" ? "none" : "block" }}

@@ -6,7 +6,6 @@ const LAMDAURL = process.env.REACT_APP_LAMDAURL;
 
 function ProfilePicture(props) {
   const { profileImg } = props;
-  console.log(profileImg);
 
   return (
     <div className="ProfilePicture">

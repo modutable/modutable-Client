@@ -8,7 +8,8 @@ const API_KEY = process.env.REACT_APP_google_API_KEY;
 export default withRouter(function AutoInput(props) {
   const onPlaceSelected = place => {
     if (props.flag === "main") {
-      console.log(place);
+      props.onChange(place.formatted_address);
+    } else if (props.flag === "signUp") {
       props.onChange(place.formatted_address);
     } else {
       props.history.push(`/search?query=${place.formatted_address}`);
@@ -32,8 +33,7 @@ export default withRouter(function AutoInput(props) {
           }}
           onPlaceSelected={onPlaceSelected}
           types={["(regions)"]}
-          placeholder="Select it from the space below."
-          value={props.city}
+          placeholder={props.city || "Select it from the space below."}
         />
         <Icon type="search" style={{ position: "absolute", right: 10, top: 15 }} />
       </div>
