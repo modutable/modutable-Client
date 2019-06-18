@@ -12,9 +12,16 @@
   -webkit-transform: scale(1.2);
   margin: 5% 5%;
 }
+.JoinHostBar-selectBox {
+  display: flex;
+  width: 20%;
+}
+.JoinHostBar-select {
+  margin: auto;
+}
 
 #JoinHostBar-check {
-  width: 70%;
+  width: 50%;
   height: 90%;
   display: flex;
   overflow-y: auto;
