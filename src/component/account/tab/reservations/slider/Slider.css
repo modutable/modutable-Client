@@ -8,6 +8,7 @@
   background-color: #f6f6f6;
   /* display: flex; */
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .slider_content {

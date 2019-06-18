@@ -4,7 +4,8 @@
   padding: 2% 0%;
   position: fixed;
   bottom: 0;
-
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+  transition: box-shadow ease-in-out 200ms;
   background-color: white;
 }
 .JoinHostBar-checkBox {
