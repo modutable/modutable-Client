@@ -1,4 +1,9 @@
+.message-list {
+  height: 90%;
+}
+
 .message-list-container {
   padding: 10px;
-  padding-bottom: 70px;
+  height: 95%;
+  overflow-y: auto;
 }
