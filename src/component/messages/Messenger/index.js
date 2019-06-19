@@ -31,7 +31,7 @@ export default class Messenger extends Component {
           messages: result.data.messages,
           myId: result.data.myId
         });
-        if (this.props === {}) {
+        if (result.data.messages.length === 0) {
           this.newRoom();
         }
       });
@@ -127,7 +127,7 @@ export default class Messenger extends Component {
     var showMessages = this.state.messages.filter(message => {
       return message.otherUserId === this.state.otherUser.otherUserId;
     });
-
+    console.log(this.state);
     return (
       <div className="messenger">
         <div className="scrollable sidebar">
