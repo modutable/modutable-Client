@@ -36,7 +36,7 @@ export default function Unconnect(props) {
             loginOnClick();
           }}
         >
-          Be come Host
+          Become Host
         </Button>
       </div>
     </>
