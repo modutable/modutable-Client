@@ -127,6 +127,7 @@ export default class Messenger extends Component {
     var showMessages = this.state.messages.filter(message => {
       return message.otherUserId === this.state.otherUser.otherUserId;
     });
+
     return (
       <div className="messenger">
         <div className="scrollable sidebar">

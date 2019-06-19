@@ -6,6 +6,7 @@ export default class Compose extends Component {
     return (
       <div className="compose">
         <input
+          disabled={this.props.inputvisible}
           type="text"
           className="compose-input"
           placeholder="Type a message, @name"

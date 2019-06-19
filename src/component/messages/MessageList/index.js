@@ -92,7 +92,11 @@ export default class MessageList extends Component {
 
         <div className="message-list-container">{this.renderMessages()}</div>
 
-        <Compose rightItems={[]} sendMessage={this.props.sendMessage} />
+        <Compose
+          rightItems={[]}
+          sendMessage={this.props.sendMessage}
+          inputvisible={this.props.messages.length === 0}
+        />
       </div>
     );
   }
