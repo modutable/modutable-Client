@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { connect } from "react-redux";
 import { Upload, Icon, message } from "antd";
 import "./Uploader.css";
 import Axios from "axios";
 import { changeIMGS } from "../../../store/modules/createDescription";
 import { changeUserImg } from "../../../store/modules/joinUser";
+
+const URL = process.env.REACT_APP_URL;
 
 function Uploader(props) {
   const Dragger = Upload.Dragger;
@@ -15,6 +17,14 @@ function Uploader(props) {
     flag === "profile"
       ? { width: 100, height: 100 }
       : { width: 800, height: 600 };
+
+  const postProfile = useCallback(profileImg => {
+    Axios.post(
+      `${URL}/auth/updateimg`,
+      { profileImg },
+      { headers: { authorization: localStorage.getItem("token") } }
+    );
+  }, []);
 
   const fileHandler = file => {
     return new Promise((resolve, reject) => {
@@ -56,6 +66,7 @@ function Uploader(props) {
             changeIMGS(images.concat(res.data.Location));
           } else {
             changeUserImg(res.data.Location);
+            postProfile(res.data.Location);
           }
         })
         .catch(err => {

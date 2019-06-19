@@ -5,7 +5,7 @@
   background: #eeeef1;
   margin-top: 30px;
 
-  grid-template-columns: 350px auto;
+  grid-template-columns: 50% auto;
   grid-template-rows: 60px auto 60px;
   grid-column-gap: 1px;
   grid-row-gap: 1px;

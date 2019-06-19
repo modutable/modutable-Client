@@ -19,7 +19,7 @@ export default function Reviews(props) {
   }, [condition, id, setReviews]);
 
   return (
-    <div className="reviews">
+    <div className="Reviews">
       <h3 style={{ fontWeight: "bold" }}> Reviews </h3>
       {reviews.map((ele, i) => (
         <div className="review_Box" key={i}>
@@ -33,7 +33,7 @@ export default function Reviews(props) {
               <div>
                 {ele.user.firstName} {ele.user.lastName}
               </div>
-              <Rate disabled allowHalf defaultValue={4.5} />
+              <Rate disabled allowHalf defaultValue={ele.score} />
               <div>{ele.review_date.slice(0, 10)}</div>
             </div>
           </div>

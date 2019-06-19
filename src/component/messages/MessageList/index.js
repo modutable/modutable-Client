@@ -21,9 +21,7 @@ export default class MessageList extends Component {
       let current = this.props.messages[i];
       let next = this.props.messages[i + 1];
       let isMine = this.props.messages[i].isMine;
-      let currentMoment = moment(
-        new Date(this.props.messages[i].createdAt).getTime()
-      );
+      let currentMoment = moment(new Date(this.props.messages[i].createdAt).getTime());
       let prevBySameAuthor = false;
       let nextBySameAuthor = false;
       let startsSequence = true;
@@ -32,9 +30,7 @@ export default class MessageList extends Component {
 
       if (previous) {
         let previousMoment = moment(previous.timestamp);
-        let previousDuration = moment.duration(
-          currentMoment.diff(previousMoment)
-        );
+        let previousDuration = moment.duration(currentMoment.diff(previousMoment));
         prevBySameAuthor = previous.author === current.author;
 
         if (prevBySameAuthor && previousDuration.as("hours") < 1) {
@@ -77,27 +73,22 @@ export default class MessageList extends Component {
 
   render() {
     return (
-      <div className="message-list">
-        <Toolbar
-          title="Conversation Title"
-          rightItems={[
-            <div onClick={this.props.deleteMessage}>
-              <ToolbarButton
-                key="info"
-                icon="ion-ios-information-circle-outline"
-              />
-            </div>
-          ]}
-        />
+      <>
+        <div className="message-list">
+          <Toolbar
+            title="Conversation Title"
+            rightItems={[
+              <div onClick={this.props.deleteMessage}>
+                <ToolbarButton key="info" icon="ion-ios-information-circle-outline" />
+              </div>
+            ]}
+          />
 
-        <div className="message-list-container">{this.renderMessages()}</div>
+          <div className="message-list-container">{this.renderMessages()}</div>
+        </div>
+        <Compose rightItems={[]} sendMessage={this.props.sendMessage} inputvisible={this.props.messages.length === 0} />
+      </>
 
-        <Compose
-          rightItems={[]}
-          sendMessage={this.props.sendMessage}
-          inputvisible={this.props.messages.length === 0}
-        />
-      </div>
     );
   }
 }

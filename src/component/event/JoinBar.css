@@ -14,26 +14,32 @@
 }
 .JoinHostBar-selectBox {
   display: flex;
-  width: 20%;
+  width: 30%;
 }
 .JoinHostBar-select {
   margin: auto;
+  width: 60%;
 }
 
 #JoinHostBar-check {
   width: 50%;
-  height: 90%;
+  height: 100%;
   display: flex;
   overflow-y: auto;
 }
 
 #JoinHostBar-buttonBox {
   height: 100%;
-  width: 30%;
+  width: 20%;
   display: flex;
 }
 #JoinHostBar-button {
-  width: 50%;
-  height: 50%;
+  width: 100px;
+  height: 50px;
   margin: auto;
+  background-color: #ff916a;
+  color: white;
+  font-weight: bold;
+  font-size: 15pt;
+  font-family: sans-serif;
 }

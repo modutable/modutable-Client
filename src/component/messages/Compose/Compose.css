@@ -4,9 +4,9 @@
   align-items: center;
   background: white;
   border-top: 1px solid #eeeef1;
-  position: absolute;
+  /* position: absolute; */
   width: calc(100% - 20px);
-  bottom: 0px;
+  /* bottom: 0px; */
 }
 
 @supports (backdrop-filter: blur(20px)) {

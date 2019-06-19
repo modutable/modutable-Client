@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import TabButton from "../component/common/header/TabButton";
 import Stages from "../component/createEvent/stages/Stages";
 import Profile from "../component/createEvent/profile/Profile";
-import { Button, Alert } from "antd";
+import { Button, Alert, message } from "antd";
 import Description from "../component/createEvent/description/Description";
 import photo from "../component/createEvent/photo/Photo";
 import { connect } from "react-redux";
@@ -45,12 +45,15 @@ class CreateEvent extends Component {
     if (e.target.id === "save") {
       if (this.props.step === "first") {
         if (this.props.address && this.props.phone) {
+          this.setState({ toggle: false });
           this.props.changeStep(this.second);
           this.props.history.push("/createEvent/description");
         } else {
           this.setState({ toggle: true });
         }
       } else if (this.props.step === "second") {
+        this.setState({ toggle: false });
+
         if (
           this.props.experience &&
           this.props.guestMin &&
@@ -66,7 +69,9 @@ class CreateEvent extends Component {
           this.setState({ toggle: true });
         }
       } else if (this.props.step === "last") {
-        if (this.props.images.length !== 0) {
+        this.setState({ toggle: false });
+
+        if (this.props.images.length >= 3) {
           let data = this.props.sendData;
           Axios.put(`${URL}/events`, data, {
             headers: { authorization: localStorage.getItem("token") }
@@ -79,6 +84,8 @@ class CreateEvent extends Component {
               console.log(error);
             });
         } else {
+          message.error("More than 3 photos should be uploaded.");
+          this.setState({ toggle: true });
         }
       }
     } else {
