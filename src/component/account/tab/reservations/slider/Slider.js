@@ -11,7 +11,6 @@ const _dataHandler = data => {
   for (let i = 0; i < data.length; i = i + 5) {
     newData.push(data.slice(i, i + 5));
   }
-  console.log("Data", newData);
   return newData;
 };
 
@@ -26,6 +25,7 @@ export default function Slider(props) {
   const [newData, setNewData] = useState([]);
   const [current, setCurrent] = useState(0);
   const [visible, setVisible] = useState(false);
+  const [eventId, setEventId] = useState(null);
 
   const getData = useCallback(() => {
     setNewData(_dataHandler(data));
@@ -43,7 +43,6 @@ export default function Slider(props) {
           { id, eventId },
           { headers: { authorization: localStorage.getItem("token") } }
         ).then(res => {
-          console.log("여기", res.data);
           change(res.data);
         });
       } else {
@@ -70,7 +69,7 @@ export default function Slider(props) {
           <div
             style={{ display: current === i ? "flex" : "none" }}
             className="dragscroll slider_contentBox"
-            key={contents[0].id + contents[0].score}
+            key={i}
           >
             {contents.map((content, i) => {
               return (
@@ -122,6 +121,7 @@ export default function Slider(props) {
                         }}
                         onClick={() => {
                           setVisible(true);
+                          setEventId(content.eventId);
                         }}
                       >
                         review
@@ -154,24 +154,22 @@ export default function Slider(props) {
                   >
                     X
                   </Button>
-                  <Modal
-                    visible={visible}
-                    onOk={() => {
-                      console.log(11);
-                    }}
-                    onCancel={() => {
-                      setVisible(false);
-                    }}
-                    footer={false}
-                  >
-                    <Review eventId={content.eventId} onClose={setVisible} />
-                  </Modal>
                 </div>
               );
             })}
           </div>
         );
       })}
+
+      <Modal
+        visible={visible}
+        onCancel={() => {
+          setVisible(false);
+        }}
+        footer={false}
+      >
+        <Review eventId={eventId} onClose={setVisible} />
+      </Modal>
 
       <Pagination
         current={current}

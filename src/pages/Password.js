@@ -20,7 +20,6 @@ export default class Password extends Component {
   }
   click = () => {
     axios.post(`${URL}/auth/password`, this.state).then(result => {
-      console.log(result);
       this.props.history.push("/");
     });
   };

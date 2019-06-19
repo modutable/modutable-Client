@@ -32,7 +32,6 @@ function Event(props) {
   useEffect(() => {
     const _getData = async () => {
       const selectData = await Axios.get(`${URL}/events/${hostId}`);
-      console.log("아ㅏ아앙", selectData.data);
       changeData(selectData.data);
     };
 

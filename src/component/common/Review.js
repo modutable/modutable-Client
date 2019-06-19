@@ -10,9 +10,15 @@ export default class Review extends Component {
     super(props);
     this.state = {
       score: 3.5,
-      comment: ""
+      comment: "",
+      eventId: ""
     };
   }
+
+  componentDidMount = () => {
+    this.setState({ eventId: this.props.eventId });
+  };
+
   rateChange = score => {
     this.setState({
       score
