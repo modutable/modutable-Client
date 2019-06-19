@@ -11,7 +11,10 @@ function Uploader(props) {
 
   const { flag, changeIMGS, changeUserImg, images } = props;
 
-  const size = flag === "profile" ? { width: 100, height: 100 } : { width: 800, height: 600 };
+  const size =
+    flag === "profile"
+      ? { width: 100, height: 100 }
+      : { width: 800, height: 600 };
 
   const fileHandler = file => {
     return new Promise((resolve, reject) => {
@@ -78,10 +81,12 @@ function Uploader(props) {
         <p className="ant-upload-drag-icon">
           <Icon type="inbox" />
         </p>
-        <p className="ant-upload-text">Click or drag file to this area to upload</p>
+        <p className="ant-upload-text">
+          Click or drag file to this area to upload
+        </p>
         <p className="ant-upload-hint">
-          Support for a single or bulk upload. Strictly prohibit from uploading company data or
-          other band files
+          Support for a single or bulk upload. Strictly prohibit from uploading
+          company data or other band files
         </p>
       </Dragger>
     </>
