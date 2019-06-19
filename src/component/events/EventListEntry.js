@@ -27,7 +27,7 @@ export default withRouter(function EventListEntry(props) {
           </h3>
         </div>
         <div className="Entry-units">
-          <h3 className="Entry-unit">{title}</h3>
+          <h3 className="Entry-unit Entry_title">{title}</h3>
         </div>
         <div className="Entry-units">
           <Rate className="Entry-unit" disabled allowHalf defaultValue={reviewRating} />

@@ -45,3 +45,9 @@
 .Entry-unit {
   margin: auto;
 }
+
+.Entry_title {
+  font-size: 20pt;
+  color: #ff916a;
+  font-weight: bold;
+}
