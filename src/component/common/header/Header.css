@@ -39,6 +39,7 @@
 #HostList-header #Top-tapMenu {
   margin: auto;
   margin-right: 30%;
+  cursor: pointer;
 }
 
 #HostList-header #Top-tapMenu .tap {

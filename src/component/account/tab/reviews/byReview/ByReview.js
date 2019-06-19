@@ -19,7 +19,7 @@ export default function ByReview(props) {
   }, [id, setReviews]);
 
   return (
-    <div className="reviews">
+    <div className="Reviews">
       <h3 style={{ fontWeight: "bold" }}> Reviews </h3>
       {reviews.map((ele, i) => (
         <div className="review_Box" key={"by" + i}>

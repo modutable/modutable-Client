@@ -18,21 +18,19 @@ export default class Review extends Component {
       score
     });
   };
-  register = async () => {
-    const { data } = await axios.post(
-      `${URL}/events/reviews/${this.props.eventId}`,
-      this.state,
-      {
+  register = () => {
+    axios
+      .post(`${URL}/events/reviews/${this.props.eventId}`, this.state, {
         headers: { authorization: localStorage.getItem("token") }
-      }
-    );
-    console.log(data);
+      })
+      .then(res => {
+        this.props.onClose(false);
+      });
   };
   render() {
     return (
       <div style={{ margin: "0px 50px" }}>
-        <h1>Review</h1>{" "}
-        <Rate allowHalf defaultValue={2.5} onChange={this.rateChange} />
+        <h1>Review</h1> <Rate allowHalf defaultValue={2.5} onChange={this.rateChange} />
         <TextArea
           rows={4}
           style={{
