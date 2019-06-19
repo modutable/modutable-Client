@@ -32,9 +32,7 @@ class Information extends Component {
         const { lat, lng } = response.results[0].geometry.location;
         this.setState({ query: address, mapPosition: { lat, lng }, markerPosition: { lat, lng } });
       },
-      error => {
-        console.error(error);
-      }
+      error => {}
     );
   };
 

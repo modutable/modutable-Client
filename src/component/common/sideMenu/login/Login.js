@@ -1,6 +1,6 @@
 import React from "react";
 import "./Login.css";
-import { Input, Drawer, Button, Modal } from "antd";
+import { Input, Button, Modal } from "antd";
 import fblogo from "../../../../img/fblogo.png";
 import googlelogo from "../../../../img/googlelogo.png";
 import axios from "axios";
@@ -45,7 +45,6 @@ export default withRouter(
             document.getElementById("fairLogin").style.display = "block";
           } else {
             localStorage.setItem("token", result.data);
-            console.log(localStorage.getItem("token"));
             this.props.history.go();
           }
         })
@@ -63,7 +62,6 @@ export default withRouter(
       }
     };
     findpassword = () => {
-      console.log(this.state.Email);
       axios.get(`${URL}/mail?email=${this.state.Email}`).then(result => {
         this.setState({
           findResult: result.data
@@ -105,17 +103,12 @@ export default withRouter(
                 onClick={() => {
                   localStorage.setItem(
                     "backurl",
-                    this.props.history.location.pathname +
-                      this.props.history.location.search
+                    this.props.history.location.pathname + this.props.history.location.search
                   );
                 }}
               >
                 <button className="sotialButton" style={fbStyle}>
-                  <img
-                    src={fblogo}
-                    style={{ width: "20px", float: "left" }}
-                    alt={"facebookLogo"}
-                  />
+                  <img src={fblogo} style={{ width: "20px", float: "left" }} alt={"facebookLogo"} />
                   Log in with Facebook
                 </button>
               </a>
@@ -125,15 +118,11 @@ export default withRouter(
                 onClick={() => {
                   localStorage.setItem(
                     "backurl",
-                    this.props.history.location.pathname +
-                      this.props.history.location.search
+                    this.props.history.location.pathname + this.props.history.location.search
                   );
                 }}
               >
-                <button
-                  className="sotialButton login-units"
-                  style={googleStyle}
-                >
+                <button className="sotialButton login-units" style={googleStyle}>
                   <img
                     src={googlelogo}
                     style={{ width: "26px", float: "left", margin: "5px 0" }}
@@ -190,8 +179,7 @@ export default withRouter(
               <p className="forgotPassword login-units">
                 <a
                   onClick={() => {
-                    document.getElementById("findForm").style.display =
-                      "inline";
+                    document.getElementById("findForm").style.display = "inline";
                   }}
                   style={{ color: "#fd7854" }}
                 >
@@ -209,25 +197,15 @@ export default withRouter(
                   }}
                   style={{ width: "80%" }}
                 />
-                <Button
-                  style={{ marginLeft: "10px" }}
-                  onClick={this.findpassword}
-                >
+                <Button style={{ marginLeft: "10px" }} onClick={this.findpassword}>
                   find!
                 </Button>
               </p>
-              <p
-                className="footer login-units"
-                style={{ display: "none" }}
-                id="findResult"
-              >
+              <p className="footer login-units" style={{ display: "none" }} id="findResult">
                 <br />
                 {this.state.findResult}
               </p>
-              <p
-                className="footer login-units"
-                style={{ justifyContent: "space-between" }}
-              >
+              <p className="footer login-units" style={{ justifyContent: "space-between" }}>
                 Don't have an account?{" "}
                 <a href="#" style={{ color: "#fd7854" }}>
                   Sign up now!

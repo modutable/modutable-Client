@@ -27,7 +27,6 @@ export default withRouter(
     }
     submitSignUp = () => {
       var flag = [];
-      console.log(this.props);
       document.getElementById("Emailalreadywarning").style.display = "none";
       flag.push(this.checkEmpty("firstName"));
       flag.push(this.checkEmpty("lastName"));
@@ -56,8 +55,7 @@ export default withRouter(
         })
         .then(result => {
           if (result.data.message === "already") {
-            document.getElementById("Emailalreadywarning").style.display =
-              "block";
+            document.getElementById("Emailalreadywarning").style.display = "block";
           } else {
             localStorage.setItem("token", result.data);
             this.props.history.go();
@@ -108,11 +106,7 @@ export default withRouter(
               </div>
               <a href={`${URL}/auth/facebook`} className="login-units">
                 <button className="sotialButton" style={fbStyle}>
-                  <img
-                    src={fblogo}
-                    style={{ width: "20px", float: "left" }}
-                    alt="FBLogo"
-                  />
+                  <img src={fblogo} style={{ width: "20px", float: "left" }} alt="FBLogo" />
                   Sign up with Facebook
                 </button>
               </a>
@@ -192,8 +186,7 @@ export default withRouter(
               <hr />
               <h5>Birthday</h5>
               <p className="birthDay-treat">
-                Don't forget to sign up for the newsletter to receive a surprise
-                treat!
+                Don't forget to sign up for the newsletter to receive a surprise treat!
               </p>
               <div className="BirthDateInput">
                 <Row>
@@ -232,8 +225,8 @@ export default withRouter(
                       this.boxCheck = e.target.checked;
                     }}
                   />{" "}
-                  Yes! I want to receive exclusive Eatwith offers, travel inspo
-                  and alo of the food in my inbox 😋
+                  Yes! I want to receive exclusive Eatwith offers, travel inspo and alo of the food
+                  in my inbox 😋
                 </label>
               </div>
               <button
@@ -251,8 +244,7 @@ export default withRouter(
                   fontWeight: "400"
                 }}
               >
-                By signing ip, I agree to Eatwith's Terms & Conditions, Trust
-                and Privacy Policy
+                By signing ip, I agree to Eatwith's Terms & Conditions, Trust and Privacy Policy
               </span>
               <p className="footer">
                 Already have an account?{" "}
@@ -268,14 +260,12 @@ export default withRouter(
                 }}
               >
                 <span>
-                  The collected data is used by Vizeat Ltd in order to process
-                  your account creation, manage your bookings, personalize your
-                  online experience and for marketing purposes should you have
-                  given your consent. In accordance with the General Data
-                  Protection Rules 2018 regarding personal data protection and
-                  the Eatwith Privacy Policy, you have the right to access,
-                  rectify or ask for the deletion of your data by writing to
-                  'jiy8319@gmail.com'
+                  The collected data is used by Vizeat Ltd in order to process your account
+                  creation, manage your bookings, personalize your online experience and for
+                  marketing purposes should you have given your consent. In accordance with the
+                  General Data Protection Rules 2018 regarding personal data protection and the
+                  Eatwith Privacy Policy, you have the right to access, rectify or ask for the
+                  deletion of your data by writing to 'jiy8319@gmail.com'
                 </span>
               </p>
             </div>

@@ -20,7 +20,6 @@ function App(props) {
         headers: { authorization: localStorage.getItem("token") }
       });
       connectSocket();
-      console.log("유저정보", userData.data);
       changeUserData(userData.data);
     };
 
