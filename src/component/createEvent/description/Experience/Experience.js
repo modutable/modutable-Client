@@ -59,8 +59,8 @@ function Experience(props) {
             onChange={changeMealsType}
           >
             <Option value="Breakfast">Breakfast</Option>
-            <Option value="Lunch">Breakfast</Option>
-            <Option value="Dinner">Breakfast</Option>
+            <Option value="Lunch">Lunch</Option>
+            <Option value="Dinner">Dinner</Option>
           </Select>
         </div>
 
@@ -121,8 +121,13 @@ function Experience(props) {
       </div>
       <p />
       <div>
-        <h3 style={{ fontWeight: "bold" }}>Tell us about your experience</h3>
-        <Input id="food" type="text" onChange={debounce(_foodHandler, 500)} />
+        <h3 style={{ fontWeight: "bold" }}>푸드즈</h3>
+        <Input
+          id="food"
+          type="text"
+          placeholder="ex1 , ex2, ex3, etc"
+          onChange={debounce(_foodHandler, 500)}
+        />
       </div>
       <p />
     </div>
