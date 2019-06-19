@@ -53,14 +53,11 @@ export default function viewEvent(state = initialState, action) {
         userId: action.data.userId
       };
     case CHANGE_GUESTS:
-      console.log("guest 바꼈다");
       return {
         ...state,
         guests: action.guests
       };
     case CHANGE_FOODS:
-      console.log("food 바꼈다", action);
-
       return {
         ...state,
         preparefoods: action.preparefoods

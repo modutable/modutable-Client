@@ -14,7 +14,6 @@ function Reservations(props) {
       Axios.get(`${URL}/events/myrequest`, {
         headers: { authorization: localStorage.getItem("token") }
       }).then(res => {
-        console.log(res.data);
         changeReservation(res.data);
       });
     };

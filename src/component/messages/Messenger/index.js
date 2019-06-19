@@ -106,7 +106,6 @@ export default class Messenger extends Component {
     this.setState({
       messages: [...this.state.messages, newMessage]
     });
-    console.log(newMessage);
     this.socket.emit(
       "sendMessage",
       Object.assign(newMessage, { token: localStorage.getItem("token") })
@@ -115,9 +114,7 @@ export default class Messenger extends Component {
   };
   userSearch = searchName => {
     var newUser = this.state.originMessages.filter(message => {
-      return message.otherUserName
-        .toLowerCase()
-        .includes(searchName.toLowerCase());
+      return message.otherUserName.toLowerCase().includes(searchName.toLowerCase());
     });
     this.setState({
       messages: newUser
@@ -127,7 +124,6 @@ export default class Messenger extends Component {
     var showMessages = this.state.messages.filter(message => {
       return message.otherUserId === this.state.otherUser.otherUserId;
     });
-    console.log(this.state);
     return (
       <div className="messenger">
         <div className="scrollable sidebar">
