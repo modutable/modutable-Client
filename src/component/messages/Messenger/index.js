@@ -26,13 +26,11 @@ export default class Messenger extends Component {
         headers: { authorization: localStorage.getItem("token") }
       })
       .then(result => {
-        console.log(result);
         this.setState({
           originMessages: result.data.messages,
           messages: result.data.messages,
           myId: result.data.myId
         });
-        console.log(this.props);
         if (result.data.messages.length === 0) {
           this.newRoom();
         }
