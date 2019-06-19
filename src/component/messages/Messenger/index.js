@@ -26,12 +26,14 @@ export default class Messenger extends Component {
         headers: { authorization: localStorage.getItem("token") }
       })
       .then(result => {
+        console.log(result);
         this.setState({
           originMessages: result.data.messages,
           messages: result.data.messages,
           myId: result.data.myId
         });
-        if (this.props === {}) {
+        console.log(this.props);
+        if (result.data.messages.length === 0) {
           this.newRoom();
         }
       });
@@ -127,7 +129,7 @@ export default class Messenger extends Component {
     var showMessages = this.state.messages.filter(message => {
       return message.otherUserId === this.state.otherUser.otherUserId;
     });
-
+    console.log(this.state);
     return (
       <div className="messenger">
         <div className="scrollable sidebar">
