@@ -3,7 +3,9 @@ import { withRouter } from "react-router-dom";
 import { Input, Button, DatePicker, Select, Icon, message, Modal } from "antd";
 import "./MainBottom.css";
 import AutoInput from "../../component/common/header/AutoInput";
+import moment from "moment";
 import Policy from "../common/policy";
+
 
 export default withRouter(function MainBottom(props) {
   const city = useRef(null);
@@ -36,6 +38,37 @@ export default withRouter(function MainBottom(props) {
     }
   };
 
+  function range(start, end) {
+    const result = [];
+    for (let i = start; i < end; i++) {
+      result.push(i);
+    }
+    return result;
+  }
+
+  function disabledDate(current) {
+    // Can not select days before today and today
+
+    return (
+      current <
+      moment()
+        .endOf("day")
+        .subtract(1, "days")
+    );
+  }
+
+  function disabledDateTime() {
+    const hour = moment().hour();
+    const minute = moment().minute();
+    const second = moment().second();
+
+    return {
+      disabledHours: () => range(0, 24).splice(0, hour),
+      disabledMinutes: () => range(0, 60).splice(0, minute),
+      disabledSeconds: () => range(0, 60).splice(0, second)
+    };
+  }
+
   return (
     <div id="Bottom-body">
       <h3
@@ -54,6 +87,11 @@ export default withRouter(function MainBottom(props) {
           onChange={_setDate}
           className="Bottom-searchBarUnit"
           size="large"
+
+          format="YYYY-MM-DD HH:mm:ss"
+          disabledDate={disabledDate}
+          disabledTime={disabledDateTime}
+          showTime={{ defaultValue: moment("00:00:00", "HH:mm:ss") }}
         />
       </div>
 
