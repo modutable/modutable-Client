@@ -44,13 +44,17 @@ function Connect(props) {
             history.push("/createEvent/profile");
           }}
         >
-          Be Come Host
+          Become Host
         </Button>
       </div>
       <div>
         <Button
           className="SideMenu-Button"
-          style={{ backgroundColor: "rgb(242,160,119)", color: "white", fontWeight: "bold" }}
+          style={{
+            backgroundColor: "rgb(242,160,119)",
+            color: "white",
+            fontWeight: "bold"
+          }}
           onClick={_logoutHandler}
         >
           Logout
