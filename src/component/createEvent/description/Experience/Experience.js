@@ -59,6 +59,8 @@ function Experience(props) {
             onChange={changeMealsType}
           >
             <Option value="Breakfast">Breakfast</Option>
+            <Option value="Lunch">Breakfast</Option>
+            <Option value="Dinner">Breakfast</Option>
           </Select>
         </div>
 

@@ -23,7 +23,7 @@ export default function SideMenu(props) {
     <>
       <Drawer title={<div />} placement="right" onClose={onClick} visible={visible}>
         {localStorage.getItem("token") ? (
-          <Connect />
+          <Connect sideMenuClose={onClick} />
         ) : (
           <Unconnect
             sideMenuClose={onClick}

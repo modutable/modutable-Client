@@ -18,6 +18,7 @@ export default function Events({ location }) {
       const searchData = await Axios.get(
         `${URL}/events?opendate=${date}&guests=${guests}&address=${query}`
       );
+      console.log("------------------->", searchData.data);
       setData(searchData.data);
     };
 

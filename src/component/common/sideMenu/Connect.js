@@ -5,11 +5,12 @@ import { withRouter } from "react-router-dom";
 import "./Connect.css";
 
 function Connect(props) {
-  const { history, profileImg, firstName, lastName } = props;
+  const { history, profileImg, firstName, lastName, sideMenuClose } = props;
 
   const _logoutHandler = () => {
     localStorage.removeItem("token");
-    props.history.go();
+
+    props.history.location.path === "/account" ? props.history.push("/") : sideMenuClose();
   };
 
   return (

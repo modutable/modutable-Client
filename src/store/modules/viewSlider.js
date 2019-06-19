@@ -1,4 +1,4 @@
-const CHANGE_RESERVATION = "Profile/CHANGE_INPUTPHONE";
+const CHANGE_RESERVATION = "Profile/CHANGE_RESERVATION";
 
 export const changeReservation = data => ({ type: CHANGE_RESERVATION, data });
 

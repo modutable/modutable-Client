@@ -1,6 +1,10 @@
 const CHANGE_EVENTDATA = "Event/CHANGE_EVENTDATA";
+const CHANGE_GUESTS = "Event/CHANGE_GUESTS";
+const CHANGE_FOODS = "Event/CHANGE_FOODS";
 
 export const changeData = data => ({ type: CHANGE_EVENTDATA, data });
+export const changeGuests = guests => ({ type: CHANGE_GUESTS, guests });
+export const changeFoods = preparefoods => ({ type: CHANGE_FOODS, preparefoods });
 
 const initialState = {
   address: null,
@@ -47,6 +51,19 @@ export default function viewEvent(state = initialState, action) {
         title: action.data.title,
         user: action.data.user,
         userId: action.data.userId
+      };
+    case CHANGE_GUESTS:
+      console.log("guest 바꼈다");
+      return {
+        ...state,
+        guests: action.guests
+      };
+    case CHANGE_FOODS:
+      console.log("food 바꼈다", action);
+
+      return {
+        ...state,
+        preparefoods: action.preparefoods
       };
     default:
       return state;
