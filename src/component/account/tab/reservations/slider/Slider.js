@@ -16,14 +16,7 @@ const _dataHandler = data => {
 };
 
 const _fickColor = () => {
-  const colors = [
-    "#EBD850",
-    "#84B544",
-    "#CBB192",
-    "#9FD1DF",
-    "#C73479",
-    "#E46136"
-  ];
+  const colors = ["#EBD850", "#84B544", "#CBB192", "#9FD1DF", "#C73479", "#E46136"];
   const random_color = colors[Math.floor(Math.random() * colors.length)];
   return random_color;
 };
@@ -82,18 +75,12 @@ export default function Slider(props) {
             {contents.map((content, i) => {
               return (
                 <div className="slider_content " key={content.id + i}>
-                  <div className="slider_content_title">
-                    {content.event.title}
-                  </div>
-                  <div className="slider_content_date">
-                    {content.event.openDate.slice(0, 10)}
-                  </div>
+                  <div className="slider_content_title">{content.event.title}</div>
+                  <div className="slider_content_date">{content.event.openDate.slice(0, 10)}</div>
                   <div className="slider_content_from">
                     To : {content.user.firstName + " " + content.user.lastName}
                   </div>
-                  <div className="slider_content_mealsType">
-                    {content.event.mealsType}
-                  </div>
+                  <div className="slider_content_mealsType">{content.event.mealsType}</div>
                   <div className="slider_content_foods">
                     {content.user.preparefoods.map(food => (
                       <div
@@ -118,11 +105,7 @@ export default function Slider(props) {
                               : "none"
                         }}
                         onClick={e => {
-                          _onClickHandler(
-                            e.target.id,
-                            content.userId,
-                            content.eventId
-                          );
+                          _onClickHandler(e.target.id, content.userId, content.eventId);
                         }}
                       >
                         confirm
@@ -131,9 +114,10 @@ export default function Slider(props) {
                         id="review"
                         style={{
                           display:
-                            content.state === "confirm" &&
-                            content.userId !== userId
-                              ? "block"
+                            content.state === "confirm"
+                              ? content.event.userId === userId
+                                ? "none"
+                                : "block"
                               : "none"
                         }}
                         onClick={() => {
@@ -146,11 +130,7 @@ export default function Slider(props) {
                       <Button
                         id="cancle"
                         onClick={e => {
-                          _onClickHandler(
-                            e.target.id,
-                            content.userId,
-                            content.eventId
-                          );
+                          _onClickHandler(e.target.id, content.userId, content.eventId);
                         }}
                         style={{
                           display: content.state === "cancle" ? "none" : "block"
@@ -163,11 +143,7 @@ export default function Slider(props) {
                   <Button
                     id="delete"
                     onClick={e => {
-                      _onClickHandler(
-                        e.target.id,
-                        content.userId,
-                        content.eventId
-                      );
+                      _onClickHandler(e.target.id, content.userId, content.eventId);
                     }}
                     style={{
                       position: "absolute",
@@ -188,7 +164,7 @@ export default function Slider(props) {
                     }}
                     footer={false}
                   >
-                    <Review eventId={4} />
+                    <Review eventId={content.eventId} onClose={setVisible} />
                   </Modal>
                 </div>
               );
