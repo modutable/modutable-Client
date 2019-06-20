@@ -130,7 +130,13 @@ function Event(props) {
       />
 
       <div className="Event-Header">
-        <div className="Event-logoBox">
+        <div
+          className="Event-logoBox"
+          onClick={() => {
+            props.history.push("/");
+          }}
+          style={{ cursor: "pointer" }}
+        >
           <img src={require("../img/blackLogo.png")} className="Event-logo" alt="logo" />
         </div>
         <TabButton />

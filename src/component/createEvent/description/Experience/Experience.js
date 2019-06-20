@@ -121,7 +121,10 @@ function Experience(props) {
       </div>
       <p />
       <div>
-        <h3 style={{ fontWeight: "bold" }}>푸드즈</h3>
+        <h3 style={{ fontWeight: "bold" }}>
+          Fill the materials that you want to prepared by them (if you want to list multiple things,
+          write them in comma)
+        </h3>
         <Input
           id="food"
           type="text"

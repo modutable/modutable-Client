@@ -103,7 +103,7 @@ class CreateEvent extends Component {
     return (
       <div className="CreateEvent">
         <div className="CreateEvent-header">
-          <div className="CreateEvent-logoBox">
+          <div className="CreateEvent-logoBox" onClick={this.props.history.push("/")}>
             <img className="CreateEvent-logo" src={require("../img/blackLogo.png")} alt={"logo"} />
           </div>
           <div className="CreateEvent-buttonBox">
