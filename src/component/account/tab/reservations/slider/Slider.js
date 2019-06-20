@@ -37,17 +37,23 @@ export default function Slider(props) {
 
   const _onClickHandler = useCallback(
     (flag, id, eventId) => {
-      if (flag !== "delete") {
+      if (flag === "confirm") {
         Axios.post(
-          flag === "confirm" ? `${URL}/events/confirm` : `${URL}/events/cancle`,
+          `${URL}/events/confirm`,
           { id, eventId },
           { headers: { authorization: localStorage.getItem("token") } }
         ).then(res => {
           change(res.data);
         });
+      } else if (flag === "delete") {
+        Axios.delete(`${URL}/events/myrequest?yourId=${id}&eventId=${eventId}`, {
+          headers: { authorization: localStorage.getItem("token") }
+        }).then(res => {
+          change(res.data);
+        });
       } else {
-        Axios.delete(
-          `${URL}/events/myrequest`,
+        Axios.post(
+          `${URL}/events/cancle`,
           { id, eventId },
           { headers: { authorization: localStorage.getItem("token") } }
         ).then(res => {
@@ -81,15 +87,19 @@ export default function Slider(props) {
                   </div>
                   <div className="slider_content_mealsType">{content.event.mealsType}</div>
                   <div className="slider_content_foods">
-                    {content.user.preparefoods.map(food => (
-                      <div
-                        key={food.name + food.id}
-                        className="slider_content_food"
-                        style={{ backgroundColor: _fickColor() }}
-                      >
-                        {food.name}
-                      </div>
-                    ))}
+                    {content.user.preparefoods
+                      .filter(food => food.eventId === content.eventId)
+                      .map(food => {
+                        return (
+                          <div
+                            key={food.name + food.id}
+                            className="slider_content_food"
+                            style={{ backgroundColor: _fickColor() }}
+                          >
+                            {food.name}
+                          </div>
+                        );
+                      })}
                   </div>
                   <div className="slider_content_buttonBox">
                     <div style={{ margin: "auto", display: "flex" }}>

@@ -10,7 +10,7 @@ function Connect(props) {
   const _logoutHandler = () => {
     localStorage.removeItem("token");
 
-    props.history.location.path === "/account" ? props.history.push("/") : sideMenuClose();
+    props.history.location.pathname === "/account" ? props.history.push("/") : sideMenuClose();
   };
 
   return (

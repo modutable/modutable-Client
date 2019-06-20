@@ -1,13 +1,20 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import { Row } from "antd";
 import "./MainTop.css";
 import TabButton from "../common/header/TabButton";
 
-export default function MainTop() {
+export default withRouter(function MainTop(props) {
   return (
     <>
       <Row id="Top-header">
-        <div id="Top-logo" />
+        <div
+          id="Top-logo"
+          onClick={() => {
+            props.history.push("/");
+          }}
+          style={{ cursor: "pointer" }}
+        />
         <TabButton />
       </Row>
 
@@ -17,4 +24,4 @@ export default function MainTop() {
       </Row>
     </>
   );
-}
+});
