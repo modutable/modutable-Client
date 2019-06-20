@@ -156,8 +156,9 @@ export default function Slider(props) {
                       _onClickHandler(e.target.id, content.userId, content.eventId);
                     }}
                     style={{
+                      padding: 0,
                       position: "absolute",
-                      top: "10px",
+                      top: "2px",
                       right: "10px",
                       border: "0px"
                     }}

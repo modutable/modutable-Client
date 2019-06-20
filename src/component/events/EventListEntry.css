@@ -1,7 +1,7 @@
 #Entry-box {
   /* border: 1px solid red; */
 
-  width: 80%;
+  width: 50%;
   height: 50%;
   margin: auto;
   margin-bottom: 5%;
@@ -47,7 +47,7 @@
 }
 
 .Entry_title {
-  font-size: 20pt;
+  font-size: 12pt;
   color: #ff916a;
   font-weight: bold;
 }

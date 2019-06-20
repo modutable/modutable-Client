@@ -40,10 +40,15 @@ export default function Events({ location }) {
       </InputGroup>
 
       <div id="HostList-contents">
-        <h2 style={{ color: "black", marginBottom: "5%" }}>Events available by request</h2>
+        <h2 style={{ color: "black", marginBottom: "50px" }}>Events available by request</h2>
         {data.map(hostData => {
           return <EventListEntry key={hostData.id} data={hostData} />;
         })}
+        <div style={{ marginTop: "80px", display: data.length ? "none" : "block" }}>
+          <Icon type="inbox" style={{ fontSize: "60pt", color: "#BFBDBF" }} />
+          <div style={{ fontSize: "40pt", color: "#BFBDBF" }}>No Data</div>
+          <div style={{ fontSize: "40pt", color: "#BFBDBF" }}>Sorry!</div>
+        </div>
       </div>
     </>
   );

@@ -30,6 +30,7 @@
     "socket.io-client": "^2.2.0"
   },
   "scripts": {
+    "deploy": "yarn build && scotty --source ./build --bucket modutable",
     "start": "cross-env NODE_PATH=src react-scripts start",
     "build": "cross-env NODE_PATH=src react-scripts build",
     "test": "react-scripts test --env=jsdom",
