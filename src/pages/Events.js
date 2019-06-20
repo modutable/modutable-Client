@@ -40,7 +40,7 @@ export default function Events({ location }) {
       </InputGroup>
 
       <div id="HostList-contents">
-        <h2 style={{ color: "black", marginBottom: "5%" }}>Events available by request</h2>
+        <h2 style={{ color: "black", marginBottom: "50px" }}>Events available by request</h2>
         {data.map(hostData => {
           return <EventListEntry key={hostData.id} data={hostData} />;
         })}
