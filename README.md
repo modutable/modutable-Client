@@ -11,11 +11,15 @@
 - 프로필 사진 등록, 변경
 - 실시간 채팅
 
+![image](https://user-images.githubusercontent.com/13481627/83964784-444e0980-a8ea-11ea-92b7-158fe9deff58.png)
+
 ## 기술 스택 사용
 - React.js
 - Redux
 - Ant Design
 - google Maps API
+
+![image](https://user-images.githubusercontent.com/13481627/83964843-88d9a500-a8ea-11ea-81db-ebcddcca6556.png)
 
 ## 프로젝트 실행 방법
 
