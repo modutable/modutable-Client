@@ -10,6 +10,12 @@
 - 프로필 사진 등록, 변경
 - 실시간 채팅
 
+## 기술 스택 사용
+- React.js
+- Redux
+- Ant Design
+- google Maps API
+
 ## 프로젝트 실행 방법
 
 ### `npm install` : 프로젝트에 필요로 한 라이브러리 설치
