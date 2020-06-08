@@ -15,6 +15,13 @@
 
 ## 기술 스택
 
+- React
+- Redux(saga)
+- Ant Design
+- Google Maps API
+
+## 서비스 아키텍처
+
 ![image](https://user-images.githubusercontent.com/13481627/83964843-88d9a500-a8ea-11ea-81db-ebcddcca6556.png)
 
 ## 프로젝트 실행 방법
