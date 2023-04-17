@@ -11,7 +11,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Set PR title from branch name
-        run: echo "::set-env name=PR_TITLE::$(echo ${GITHUB_REF#refs/heads/})"
+        run: echo "PR_TITLE=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
       - name: Create pull request
         uses: peter-evans/create-pull-request@v3
         with:
