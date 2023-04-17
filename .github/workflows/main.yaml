@@ -15,5 +15,5 @@ jobs:
       - name: Create pull request
         uses: peter-evans/create-pull-request@v3
         with:
-          pull_request_title: ${{ inputs.pull_request_title }}
+          pull_request_title: "ethan Test"
           base: ${{ github.head_ref }}
