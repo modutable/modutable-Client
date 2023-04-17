@@ -1,15 +1,19 @@
-name: Set PR Title
+name: Auto populate PR title from branch name
 
 on:
   pull_request:
     types: [opened]
 
 jobs:
-  set-pr-title:
+  auto-populate-pr-title:
     runs-on: ubuntu-latest
     steps:
-      - name: Update PR Title
-        uses: peter-evans/create-pull-request@v3.11.0
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set PR title from branch name
+        run: echo "::set-input name=pull_request_title::$(echo ${GITHUB_REF#refs/heads/})"
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v3
         with:
-          title: "123"
-          commit-message: Update PR Title
+          pull_request_title: "123"
+          base: ${{ github.head_ref }}
