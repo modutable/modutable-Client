@@ -15,7 +15,5 @@ jobs:
       - name: Create pull request
         uses: peter-evans/create-pull-request@v3
         with:
-          title: ${{ env.PR_TITLE }}
+          pull_request_title: ${{ env.PR_TITLE }}
           base: ${{ github.head_ref }}
-          env:
-            PR_TITLE: ${{ env.PR_TITLE }}
