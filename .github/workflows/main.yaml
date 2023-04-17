@@ -1,0 +1,19 @@
+name: Auto populate PR title from branch name
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  auto-populate-pr-title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set PR title from branch name
+        run: echo "PR_TITLE=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: ${{ env.PR_TITLE }}
+          branch: ${{ github.ref }}
