@@ -16,4 +16,4 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           title: ${{ env.PR_TITLE }}
-          branch: ${{ github.ref }}
+          base: ${{ github.head_ref }}
